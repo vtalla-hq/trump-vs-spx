@@ -1,4 +1,10 @@
-import json
+"""Builds public/data/events.json and kobeissi.json.
+
+Every row was gathered from a news report; its url is the source for the % move.
+Run: python3 scripts/build_events.py
+"""
+import json, os
+OUT = os.path.join(os.path.dirname(__file__), "..", "public", "data") + "/"
 E=[
 ("e01","2025-03-10",-2.7,5614.56,"Recession talk","Asked on Fox about a 2025 recession: \"I hate to predict things like that. There is a period of transition.\"","A hedge, not a policy. Commerce Sec. Lutnick said there was \"no chance\" of a recession the same weekend.","Rhetoric","Weak economic data and a Delta profit warning landed the same day.","NPR / KPBS","https://www.kpbs.org/news/economy/2025/03/10/stocks-slump-yet-again-as-fears-grow-about-tariffs-and-a-recession",False),
 ("e02","2025-04-03",-4.84,5396.52,"Tariffs","\"Liberation Day\" (Apr 2, after the close): 10% global baseline tariff plus reciprocal rates of 11–50%.","Did it. The 10% baseline took effect Apr 5.","Followed through","None major. Kobeissi: futures lost ~$2T in under 15 minutes as he read the list.","Inquirer / AFP","https://business.inquirer.net/517558/us-stocks-tank-on-tariff-woes-with-sp-500-suffering-worst-day-since-2020",True),
@@ -27,7 +33,9 @@ E=[
 ]
 cols=["id","date","pct","close","topic","said","did","tag","context","source","url","threat_day"]
 rows=sorted([dict(zip(cols,e)) for e in E],key=lambda r:r["date"])
-json.dump(rows,open("events.json","w"),ensure_ascii=False,indent=1)
+H={"e01":"\"Period of transition\" recession hedge","e02":"Liberation Day tariffs","e03":"Holds firm as China retaliates","e04":"Fake 90-day pause headline","e05":"\"Great time to buy\" → 90-day pause","e06":"\"Mr. Too Late\" attack on Powell","e07":"China truce: 145% → 30%","e08":"EU 50% tariff delayed","e09":"100% China tariff threat","e10":"\"Don't worry about China\"","e11":"Greenland tariffs on 8 countries","e12":"Greenland tariffs dropped","e13":"Supreme Court kills IEEPA tariffs","e14":"Strikes on Iran begin","e15":"\"War is very complete\"","e17":"Reports he'd end the war","e18":"Iran ceasefire","e19":"Ceasefire extended","e20":"\"Agreement is over\"","e21":"Canada/Mexico tariffs, paused same day","e22":"\"No room left\": tariffs go live","e23":"50% EU + iPhone tariff threat","e24":"Tariff letters to Japan, Korea","e25":"Tariffs roll out, BLS chief fired"}
+for r in rows: r["headline"]=H[r["id"]]
+json.dump(rows,open(OUT+"events.json","w"),ensure_ascii=False,indent=1)
 K=[
 ("k1","2025-04-02","e02","Said S&P futures erased $2 trillion of market cap in under 15 minutes as \"reciprocal tariffs\" were announced.","https://t.me/s/sclojure/55687"),
 ("k2","2025-04-02","e02","Timed it: futures fell in real time as Trump read the tariffs country by country, from 4:26 to 4:42 PM ET.","https://t.me/s/sclojure/55660"),
@@ -35,5 +43,5 @@ K=[
 ("k4","2025-04-07","e04","Said the false Hassett headline swung $6T of S&P market cap: the largest 30-minute swing ever.","https://dailyhodl.com/2025/04/07/6000000000000-stock-market-swing-hammers-us-traders-as-trump-warns-trade-war-wont-be-easy"),
 ("k5","2025-04-10","e05","Argued bonds, not stocks, forced the pause: \"the bond market BROKE\" and the pause came 12 hours later.","https://t.me/s/sclojure/56715"),
 ]
-json.dump([dict(zip(["id","date","event_id","post","url"],k)) for k in K],open("kobeissi.json","w"),ensure_ascii=False,indent=1)
+json.dump([dict(zip(["id","date","event_id","post","url"],k)) for k in K],open(OUT+"kobeissi.json","w"),ensure_ascii=False,indent=1)
 print(len(rows))
