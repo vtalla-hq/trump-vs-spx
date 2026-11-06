@@ -11,7 +11,7 @@ export function drawCredibility(box, rows, onSelect) {
   const ml = leftAxis(svg, y, W, mr, 4, d3.format('.0%'));
   const x = d3.scaleUtc(d3.extent(data, (r) => r.t), [ml + 6, W - mr]);
   const gx = svg.append('g').attr('transform', `translate(0,${H - mb})`)
-    .call(d3.axisBottom(x).ticks(Math.max(2, Math.floor(W / 120))).tickFormat(d3.utcFormat("%b '%y")).tickSize(0).tickPadding(8));
+    .call(d3.axisBottom(x).ticks(W < 520 ? d3.utcMonth.every(6) : Math.max(2, Math.floor(W / 120))).tickFormat(d3.utcFormat("%b '%y")).tickSize(0).tickPadding(8));
   styleAxis(gx);
 
   svg.append('line').attr('x1', ml).attr('x2', W - mr).attr('y1', y(0.5)).attr('y2', y(0.5))

@@ -69,4 +69,5 @@ details p { margin: 4px 0; }
 @media (max-width: 560px) {
   .score { grid-template-columns: 1fr; }
   .hide-sm { display: none; }
+  .chart { min-height: 260px; }
 }

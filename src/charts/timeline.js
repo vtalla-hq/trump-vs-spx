@@ -4,7 +4,8 @@ import { svgFor, leftAxis, styleAxis, makeTip } from './common.js';
 
 /** S&P 500 monthly line with a dot per event, sized by that day's move. */
 export function drawTimeline(box, spx, events, selected, onSelect) {
-  const H = 340, mb = 24, mt = 14, mr = 30;
+  const narrow = box.clientWidth < 520;
+  const H = narrow ? 260 : 340, mb = 24, mt = 14, mr = narrow ? 22 : 30;
   const { svg, W } = svgFor(box, H);
   const pts = spx.map((r) => ({ t: d3.utcDay.offset(toDate(r.month), 14), v: r.avg_close }));
   const evs = events.map((r) => ({ ...r, t: toDate(r.date) }));
@@ -13,7 +14,7 @@ export function drawTimeline(box, spx, events, selected, onSelect) {
   const ml = leftAxis(svg, y, W, mr, 5, d3.format(','));
   const x = d3.scaleUtc([d3.min([pts[0].t, ...evs.map((d) => d.t)]), pts[pts.length - 1].t], [ml, W - mr]);
   const gx = svg.append('g').attr('transform', `translate(0,${H - mb})`)
-    .call(d3.axisBottom(x).ticks(Math.max(3, Math.floor(W / 110))).tickFormat(d3.utcFormat("%b '%y")).tickSize(0).tickPadding(8));
+    .call(d3.axisBottom(x).ticks(narrow ? d3.utcMonth.every(6) : Math.max(3, Math.floor(W / 110))).tickFormat(d3.utcFormat("%b '%y")).tickSize(0).tickPadding(8));
   styleAxis(gx);
 
   const yAt = (t) => {
