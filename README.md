@@ -1,5 +1,7 @@
 # Trump vs the S&P 500
 
+**Live: [trump-vs-spx.vercel.app](https://trump-vs-spx.vercel.app)**
+
 What Trump said vs what he actually did, and how the S&P 500 reacted. 24 market-moving days from Feb 2025 to Jul 2026, each with a linked news source.
 
 ![Screenshot](docs/screenshot.png)
