@@ -1,0 +1,18 @@
+{
+  "name": "trump-vs-spx",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "What Trump said vs what he did, and how the S&P 500 reacted.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "d3": "^7.9.0"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  }
+}
