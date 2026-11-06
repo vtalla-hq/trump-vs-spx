@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trump vs the S&amp;P 500</title>
+  <meta name="description" content="What Trump said vs what he did, and how the S&P 500 reacted, with a source for every move." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📉</text></svg>" />
+</head>
+<body>
+  <main class="tp">
+    <header>
+      <h1>Trump vs the S&amp;P 500</h1>
+      <p class="sub">Tap a dot to see what he said vs what happened.</p>
+    </header>
+
+    <section class="card" id="scorecard">
+      <div class="score">
+        <div>
+          <div class="big"><span id="n-followed">—</span><span class="of">/</span><span class="of" id="n-events">—</span></div>
+          <div class="cap">times he did what he said</div>
+        </div>
+        <div>
+          <div class="blocks" id="blocks"></div>
+          <div class="bl" id="block-legend"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="stat"><div class="k">Backed off or wrong</div><div class="v down"><span id="n-broke">—</span><span class="of"> / </span><span id="n-events2">—</span></div></div>
+      <div class="stat"><div class="k">Worst day</div><div class="v down" id="worst">—</div></div>
+      <div class="stat"><div class="k">Best day</div><div class="v up" id="best">—</div></div>
+      <div class="stat"><div class="k">Avg move</div><div class="v" id="avg">—</div></div>
+    </section>
+
+    <section class="card" id="timeline-card">
+      <div class="legend">
+        <span><i data-tag="Followed through"></i>Did it</span>
+        <span><i data-tag="Walked back"></i>Walked back</span>
+        <span><i data-tag="Rhetoric"></i>Just talk</span>
+        <span><i data-tag="Didn't check out"></i>False claim</span>
+        <span><i data-tag="False report"></i>Fake news / rumor</span>
+        <span><i data-tag="Overruled"></i>Court</span>
+      </div>
+      <div class="chart" id="timeline"></div>
+    </section>
+
+    <section class="card detail" id="detail"></section>
+
+    <div class="row2">
+      <section class="card">
+        <h2>Does he keep his word? (running %)</h2>
+        <div class="chart sm" id="cred"></div>
+      </section>
+      <section class="card">
+        <h2>How hard each new tariff threat hit</h2>
+        <div class="chart sm" id="decay"></div>
+      </section>
+    </div>
+
+    <section class="card">
+      <h2>All events</h2>
+      <div class="list">
+        <table>
+          <thead><tr><th>Date</th><th>Move</th><th>What</th><th class="hide-sm">Outcome</th></tr></thead>
+          <tbody id="events-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Kobeissi Letter, live</h2>
+      <div class="list">
+        <table>
+          <thead><tr><th>Date</th><th>Post (paraphrased)</th><th></th></tr></thead>
+          <tbody id="kob-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <details>
+      <summary>Method</summary>
+      <p>Line: S&amp;P 500 monthly average close. Dots: event days, sized by that day's % move (from the linked news report).</p>
+      <p>One day's move isn't proof of cause. Each event lists what else happened that day.</p>
+    </details>
+  </main>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
