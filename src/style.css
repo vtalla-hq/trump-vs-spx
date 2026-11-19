@@ -71,3 +71,5 @@ details p { margin: 4px 0; }
   .hide-sm { display: none; }
   .chart { min-height: 260px; }
 }
+h2.sec { font-family: var(--serif); font-weight: 400; font-size: 1.5rem; margin: 28px 0 0; }
+.note { color: var(--muted); font-size: 12px; margin: 8px 0 0; }

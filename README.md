@@ -9,7 +9,7 @@ What Trump said vs what he actually did, and how the S&P 500 reacted. 24 market-
 ## What's on it
 
 - **Follow-through score**: how often he did what he said (10/24), with every event as a colored block.
-- **S&P 500 line**: monthly average close, with a dot for each event sized by that day's % move. Tap a dot for what he said, what actually happened, what else was going on that day, and the source.
+- **S&P 500 line**: daily close, with a dot for each event sized by that day's % move. Tap a dot for what he said, what actually happened, what else was going on that day, and the source.
 - **Does he keep his word?**: running follow-through rate, counting only real promises (did it vs walked back vs false claim).
 - **Tariff threat reactions**: the S&P's move the day after each new tariff threat. Liberation Day (−4.84%) is the outlier.
 - **Kobeissi Letter**: their real-time posts on the big days, paraphrased and linked.
@@ -25,7 +25,8 @@ npm run build    # outputs dist/
 ## Data
 
 - `public/data/events.json`: one row per event (`said`, `did`, `tag`, `pct`, `context`, `source`, `url`).
-- `public/data/spx_monthly.json`: S&P 500 monthly averages.
+- `public/data/daily.json`: daily closes (`scripts/fetch_prices.py`).
+- `public/data/study.json`: event study output (`scripts/event_study.py`).
 - `public/data/kobeissi.json`: Kobeissi posts.
 - `scripts/build_events.py` rebuilds the event files.
 

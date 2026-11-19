@@ -1,6 +1,6 @@
 # Data sources
 
-Every S&P 500 move comes from the news report linked in its row. Monthly S&P averages are from [datasets/s-and-p-500](https://github.com/datasets/s-and-p-500) (monthly average of daily closes).
+Every S&P 500 move comes from the news report linked in its row. Daily closes for ^GSPC, ^VIX, ^TNX, XLE, ITA, SOXX and FXI come from Yahoo Finance via `yfinance` (`scripts/fetch_prices.py` → `public/data/daily.json`).
 
 ## Events
 
