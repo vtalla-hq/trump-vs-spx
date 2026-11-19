@@ -19,6 +19,8 @@
       <p class="sub">Tap a dot to see what he said vs what happened.</p>
     </header>
 
+    <section class="deadlines" id="deadlines" aria-label="Upcoming deadlines"></section>
+
     <section class="card" id="scorecard">
       <div class="score">
         <div>
@@ -127,6 +129,50 @@
       <h2>How reliable is the auto-tagger?</h2>
       <p class="note" style="margin:0 0 4px">Days with |standardized AR| &gt; 2 are scraped and tagged by an LLM. Before trusting it, it was run blind on the hand-labeled days above.</p>
       <div id="cal"></div>
+    </section>
+
+    <h2 class="sec" id="forecasts">Forecasts</h2>
+    <p class="sub">When he sets a deadline, the model logs p(he walks it back) and an 80% range for the S&amp;P's move on the day it resolves, before the outcome is known. Every forecast is its own git commit in <code>data/predictions.jsonl</code> and is never edited. <b>Not financial advice. Small sample.</b></p>
+    <p class="verdict" id="fc-verdict"></p>
+
+    <section class="card">
+      <h2>Pending forecasts</h2>
+      <div class="list">
+        <table>
+          <thead><tr><th>Deadline</th><th>What</th><th>p(walk-back)</th><th>Base rate</th><th>Market</th><th>S&amp;P move on resolution, 80%</th></tr></thead>
+          <tbody id="fc-pending"></tbody>
+        </table>
+      </div>
+      <p class="note" id="fc-meta"></p>
+    </section>
+
+    <div class="row2">
+      <section class="card">
+        <h2>Brier score (lower is better)</h2>
+        <div class="list">
+          <table>
+            <thead><tr><th></th><th>Model</th><th>Base rate</th><th>Market</th></tr></thead>
+            <tbody id="fc-brier"></tbody>
+          </table>
+        </div>
+        <p class="note">Base rate = share of past deadlines he walked back or extended, using only deadlines resolved before the forecast. Markets are scored only where a matching Kalshi or Polymarket market exists.</p>
+      </section>
+      <section class="card">
+        <h2>Calibration (walk-forward backtest)</h2>
+        <div class="chart sm" id="fc-cal"></div>
+        <p class="note">Dots on the dashed line = well calibrated. Each dot is a bin of forecasts.</p>
+      </section>
+    </div>
+
+    <section class="card">
+      <h2>Track record</h2>
+      <div class="list">
+        <table>
+          <thead><tr><th>Date</th><th>Deadline</th><th>Model</th><th>Base</th><th>Outcome</th><th>Call</th><th class="hide-sm">Source</th></tr></thead>
+          <tbody id="fc-track"></tbody>
+        </table>
+      </div>
+      <p class="note" id="fc-track-cap"></p>
     </section>
 
     <details>

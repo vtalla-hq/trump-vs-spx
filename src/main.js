@@ -5,11 +5,12 @@ import { drawThreats } from './charts/threats.js';
 import { renderScorecard } from './ui/scorecard.js';
 import { renderDetail, renderCalibration } from './ui/detail.js';
 import { renderEvents, renderKobeissi, renderAR, renderBacktest } from './ui/tables.js';
-import { drawPermutation, drawSectorStrip } from './charts/numbers.js';
+import { drawPermutation, drawSectorStrip, drawCalibration } from './charts/numbers.js';
 import { credibility, threatDays } from './stats.js';
+import { renderDeadlines, renderForecasts } from './ui/forecast.js';
 
 const $ = (id) => document.getElementById(id);
-const state = { events: [], auto: [], spx: [], kob: [], study: null, cal: null, selected: null };
+const state = { events: [], auto: [], spx: [], kob: [], study: null, cal: null, fc: null, selected: null };
 const handRows = () => state.study.events.filter((r) => !r.auto);
 const studyFor = (id) => state.study.events.find((r) => r.id === id);
 
@@ -45,6 +46,7 @@ function renderCharts() {
   drawThreats($('decay'), threatDays(state.events), select);
   drawPermutation($('perm'), state.study.permutation.overall);
   drawSectorStrip($('sectors'), handRows(), Object.keys(state.study.events[0].sectors), select);
+  if (state.fc) drawCalibration($('fc-cal'), state.fc.live.calibration.length ? state.fc.live.calibration : state.fc.backtest.calibration);
 }
 
 function renderNumbers() {
@@ -62,6 +64,7 @@ async function init() {
   try {
     const [events, daily, kob, study, auto, cal] = await Promise.all([load('events'), load('daily'), load('kobeissi'), load('study'),
       loadOpt('auto_events', []), loadOpt('calibration', null)]);
+    state.fc = await loadOpt('forecast', null);
     const hand = new Set(events.map((r) => r.date));
     state.auto = auto.filter((r) => !hand.has(r.date) && r.pct != null);
     state.cal = cal;
@@ -76,6 +79,8 @@ async function init() {
   renderScorecard(state.events, select);
   renderKobeissi($('kob-table'), state.kob, select);
   renderNumbers();
+  renderDeadlines($('deadlines'), state.fc);
+  if (state.fc) renderForecasts(state.fc);
   renderSelected();
   renderCharts();
 
