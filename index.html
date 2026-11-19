@@ -14,125 +14,111 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📉</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
   <nav class="top">
     <div class="wrap">
-      <a class="brand" href="#"><span class="mark">◆</span> Trump vs SPX</a>
+      <a class="brand" href="#"><span class="mark"></span>Trump<i>vs</i>SPX</a>
       <div class="links">
         <a href="#record">Record</a>
-        <a href="#numbers">The numbers</a>
+        <a href="#numbers">Numbers</a>
         <a href="#forecasts">Forecasts</a>
         <a href="#sources">Sources</a>
       </div>
-      <a class="btn" href="https://github.com/vtalla-hq/trump-vs-spx" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://github.com/vtalla-hq/trump-vs-spx" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
   </nav>
+  <section class="ticker" id="deadlines" aria-label="Upcoming deadlines"></section>
 
   <main class="tp">
     <header class="hero">
-      <div class="eyebrow"><span>Event study</span> 24 market-moving days since Feb 2025 · updated every weekday</div>
-      <h1><span class="dim">What he said.</span><br />What the market did.</h1>
-      <p class="lede">Every Trump statement that moved the S&amp;P 500, what actually happened next, and a daily forecast of whether he'll back down. Each number shows its sample size.</p>
-      <div class="kpis" id="kpis"></div>
+      <div class="hero-copy">
+        <div class="eyebrow"><span>Live</span> Event study · 24 market-moving days since Feb 2025</div>
+        <h1><span class="dim">What he said.</span> What the market did.</h1>
+        <p class="lede">Every Trump statement that moved the S&amp;P 500, what actually happened next, and a daily forecast of whether he'll back down. Every number shows its sample size.</p>
+        <div class="cta"><a class="btn solid" href="#record">See the record</a><a class="btn" href="#forecasts">Latest forecasts</a></div>
+      </div>
+      <section class="scoreboard" id="scorecard">
+        <div class="lbl">Did what he said</div>
+        <div class="big"><span id="n-followed">—</span><span class="of">/<span id="n-events">—</span></span></div>
+        <div class="blocks" id="blocks"></div>
+        <div class="bl" id="block-legend"></div>
+      </section>
     </header>
 
-    <section class="deadlines" id="deadlines" aria-label="Upcoming deadlines"></section>
+    <div class="kpis" id="kpis"></div>
 
     <!-- 01 -->
     <section class="chapter" id="record">
-      <div class="sh"><span class="num">01</span><div><h2>The record</h2><p>Tap a dot to see what he said vs what happened.</p></div></div>
+      <div class="sh"><span class="num">01</span><h2>The record</h2><p>The S&amp;P 500 since January 2025, with a dot for each statement that moved it. Tap a dot to see what he said next to what happened.</p></div>
 
-      <div class="grid-score">
-        <section class="card" id="scorecard">
-          <div class="score">
-            <div>
-              <div class="big"><span id="n-followed">—</span><span class="of">/</span><span class="of" id="n-events">—</span></div>
-              <div class="cap">times he did what he said</div>
-            </div>
-            <div>
-              <div class="blocks" id="blocks"></div>
-              <div class="bl" id="block-legend"></div>
+      <section class="panel tape" id="timeline-card">
+        <div class="tape-main">
+          <div class="card-h">
+            <h3>S&amp;P 500, daily close</h3>
+            <div class="legend">
+              <span><i data-tag="Followed through"></i>Did it</span>
+              <span><i data-tag="Walked back"></i>Walked back</span>
+              <span><i data-tag="Didn't check out"></i>False claim</span>
+              <span><i data-tag="Rhetoric"></i>Not a promise</span>
+              <span><i class="auto-key"></i>Auto-detected</span>
             </div>
           </div>
-        </section>
-        <section class="stats">
-          <div class="stat"><div class="k">Backed off or wrong</div><div class="v down"><span id="n-broke">—</span><span class="of"> / </span><span id="n-events2">—</span></div></div>
-          <div class="stat"><div class="k">Worst day</div><div class="v down" id="worst">—</div></div>
-          <div class="stat"><div class="k">Best day</div><div class="v up" id="best">—</div></div>
-          <div class="stat"><div class="k">Avg move</div><div class="v" id="avg">—</div></div>
-        </section>
-      </div>
-
-      <section class="card" id="timeline-card">
-        <div class="card-h">
-          <h3>S&amp;P 500, daily close</h3>
-          <div class="legend">
-            <span><i data-tag="Followed through"></i>Did it</span>
-            <span><i data-tag="Walked back"></i>Walked back</span>
-            <span><i data-tag="Didn't check out"></i>False claim</span>
-            <span><i data-tag="Rhetoric"></i>Not a promise (talk, rumor, court)</span>
-            <span><i class="auto-key"></i>Auto-detected</span>
-          </div>
+          <div class="chart" id="timeline"></div>
         </div>
-        <div class="chart" id="timeline"></div>
+        <aside class="detail" id="detail"></aside>
       </section>
 
-      <section class="card detail" id="detail"></section>
+      <section class="stats">
+        <div class="stat"><div class="k">Backed off or wrong</div><div class="v down"><span id="n-broke">—</span><span class="of">/<span id="n-events2">—</span></span></div></div>
+        <div class="stat"><div class="k">Worst day</div><div class="v down" id="worst">—</div></div>
+        <div class="stat"><div class="k">Best day</div><div class="v up" id="best">—</div></div>
+        <div class="stat"><div class="k">Avg move</div><div class="v" id="avg">—</div></div>
+      </section>
 
       <div class="row2">
-        <section class="card">
-          <h3>Does he keep his word? (running %)</h3>
+        <section class="panel">
+          <h3>Does he keep his word? <small>running %</small></h3>
           <div class="chart sm" id="cred"></div>
         </section>
-        <section class="card">
+        <section class="panel">
           <h3>How hard each new tariff threat hit</h3>
           <div class="chart sm" id="decay"></div>
         </section>
       </div>
 
-      <section class="card">
-        <h3>All events</h3>
+      <details class="more">
+        <summary>All events <span>table</span></summary>
         <div class="list">
           <table>
             <thead><tr><th>Date</th><th>Move</th><th>What</th><th class="hide-sm">Outcome</th></tr></thead>
             <tbody id="events-table"></tbody>
           </table>
         </div>
-      </section>
+      </details>
     </section>
 
     <!-- 02 -->
     <section class="chapter" id="numbers">
-      <div class="sh"><span class="num">02</span><div><h2>The numbers</h2>
-        <p>Abnormal return (AR) = the day's return minus the S&amp;P's mean daily return over trading days −120 to −11. σ = AR divided by that window's standard deviation. CAR = AR summed over the window. Small samples: read these as descriptive, not proof.</p></div></div>
+      <div class="sh"><span class="num">02</span><h2>The numbers</h2>
+        <p>Abnormal return (AR) = the day's return minus the S&amp;P's mean daily return over trading days −120 to −11. σ = AR divided by that window's standard deviation. CAR = AR summed over the window. Small samples: read these as descriptive, not proof.</p></div>
 
       <div class="row2">
-        <section class="card">
+        <section class="panel">
           <h3>Are event days bigger than random days?</h3>
           <div class="chart sm" id="perm"></div>
           <p class="note" id="perm-cap"></p>
         </section>
-        <section class="card">
-          <h3>Sector abnormal returns on day 0 (vs S&amp;P beta)</h3>
+        <section class="panel">
+          <h3>Sector abnormal returns on day 0 <small>vs S&amp;P beta</small></h3>
           <div class="chart" id="sectors" style="min-height:0"></div>
           <p class="note">Blue = beat what its S&amp;P beta implied, red = lagged. Market model fit on days −120 to −11. Tap a cell for the event.</p>
         </section>
       </div>
 
-      <section class="card">
-        <h3>Abnormal returns by event (n=<span id="ar-n"></span>)</h3>
-        <div class="list">
-          <table>
-            <thead><tr><th>Date</th><th>Event</th><th>AR</th><th>σ</th><th class="hide-sm">CAR 0,+1</th><th class="hide-sm">CAR 0,+5</th><th class="hide-sm">ΔVIX</th><th class="hide-sm">Δ10Y bp</th></tr></thead>
-            <tbody id="ar-table"></tbody>
-          </table>
-        </div>
-      </section>
-
-      <section class="card">
-        <h3>"TACO" backtest: buy the threat, sell the walk-back</h3>
+      <section class="panel">
+        <h3>"TACO" backtest <small>buy the threat, sell the walk-back</small></h3>
         <div class="list">
           <table>
             <thead><tr><th>Entry</th><th>Threat</th><th>Hold</th><th>Return</th><th class="hide-sm">Avg SPX, same hold</th><th>Excess</th></tr></thead>
@@ -142,18 +128,28 @@
         <p class="note" id="bt-cap"></p>
         <p class="note">* no walk-back, exited after 5 trading days. "Avg SPX, same hold" = mean S&amp;P return over every holding period of that length since 2024. Close-to-close, no costs.</p>
       </section>
+
+      <details class="more">
+        <summary>Abnormal returns by event <span>n=<b id="ar-n"></b></span></summary>
+        <div class="list">
+          <table class="wide">
+            <thead><tr><th>Date</th><th>Event</th><th>AR</th><th>σ</th><th class="hide-sm">CAR 0,+1</th><th class="hide-sm">CAR 0,+5</th><th class="hide-sm">ΔVIX</th><th class="hide-sm">Δ10Y bp</th></tr></thead>
+            <tbody id="ar-table"></tbody>
+          </table>
+        </div>
+      </details>
     </section>
 
     <!-- 03 -->
     <section class="chapter" id="forecasts">
-      <div class="sh"><span class="num">03</span><div><h2>Forecasts</h2>
-        <p>When he sets a deadline, the model logs p(he walks it back) and an 80% range for the S&amp;P's move on the day it resolves, before the outcome is known. Every forecast is its own git commit in <code>data/predictions.jsonl</code> and is never edited. <b>Not financial advice. Small sample.</b></p></div></div>
+      <div class="sh"><span class="num">03</span><h2>Forecasts</h2>
+        <p>When he sets a deadline, the model logs p(he walks it back) and an 80% range for the S&amp;P's move on the day it resolves, before the outcome is known. Every forecast is its own git commit in <code>data/predictions.jsonl</code> and is never edited. <b>Not financial advice. Small sample.</b></p></div>
       <p class="verdict" id="fc-verdict"></p>
 
-      <section class="card">
+      <section class="panel">
         <h3>Pending forecasts</h3>
         <div class="list">
-          <table>
+          <table class="wide">
             <thead><tr><th>Deadline</th><th>What</th><th>p(walk-back)</th><th>Base rate</th><th>Market</th><th>S&amp;P move on resolution, 80%</th></tr></thead>
             <tbody id="fc-pending"></tbody>
           </table>
@@ -162,8 +158,8 @@
       </section>
 
       <div class="row2">
-        <section class="card">
-          <h3>Brier score (lower is better)</h3>
+        <section class="panel">
+          <h3>Brier score <small>lower is better</small></h3>
           <div class="list">
             <table>
               <thead><tr><th></th><th>Model</th><th>Base rate</th><th>Market</th></tr></thead>
@@ -172,35 +168,35 @@
           </div>
           <p class="note">Base rate = share of past deadlines he walked back or extended, using only deadlines resolved before the forecast. Markets are scored only where a matching Kalshi or Polymarket market exists.</p>
         </section>
-        <section class="card">
-          <h3>Calibration (walk-forward backtest)</h3>
+        <section class="panel">
+          <h3>Calibration <small>walk-forward backtest</small></h3>
           <div class="chart sm" id="fc-cal"></div>
           <p class="note">Dots on the dashed line = well calibrated. Each dot is a bin of forecasts.</p>
         </section>
       </div>
 
-      <section class="card">
-        <h3>Track record</h3>
+      <details class="more">
+        <summary>Track record <span>table</span></summary>
         <div class="list">
-          <table>
+          <table class="wide">
             <thead><tr><th>Date</th><th>Deadline</th><th>Model</th><th>Base</th><th>Outcome</th><th>Call</th><th class="hide-sm">Source</th></tr></thead>
             <tbody id="fc-track"></tbody>
           </table>
         </div>
         <p class="note" id="fc-track-cap"></p>
-      </section>
+      </details>
     </section>
 
     <!-- 04 -->
     <section class="chapter" id="sources">
-      <div class="sh"><span class="num">04</span><div><h2>Sources &amp; reliability</h2><p>Every event links to a news report. Days the pipeline finds on its own are tagged by an LLM, checked against the hand labels first.</p></div></div>
+      <div class="sh"><span class="num">04</span><h2>Sources</h2><p>Every event links to a news report. Days the pipeline finds on its own are tagged by an LLM, checked against the hand labels first.</p></div>
       <div class="row2">
-        <section class="card">
+        <section class="panel">
           <h3>How reliable is the auto-tagger?</h3>
-          <p class="note" style="margin:0 0 6px">Days with |standardized AR| &gt; 2 are scraped and tagged by an LLM. Before trusting it, it was run blind on the hand-labeled days.</p>
+          <p class="note" style="margin:0 0 10px">Days with |standardized AR| &gt; 2 are scraped and tagged by an LLM. Before trusting it, it was run blind on the hand-labeled days.</p>
           <div id="cal"></div>
         </section>
-        <section class="card">
+        <section class="panel">
           <h3>Kobeissi Letter, live</h3>
           <div class="list">
             <table>
@@ -213,6 +209,7 @@
     </section>
 
     <footer>
+      <div class="brand"><span class="mark"></span>Trump<i>vs</i>SPX</div>
       <p>Line: S&amp;P 500 daily close (Yahoo Finance). Dots: event days, sized by that day's % move (from the linked news report). One day's move isn't proof of cause; each event lists what else happened that day.</p>
       <p>Methodology, results and limitations are in the <a href="https://github.com/vtalla-hq/trump-vs-spx#methodology" target="_blank" rel="noopener">README</a>. Not financial advice.</p>
     </footer>
