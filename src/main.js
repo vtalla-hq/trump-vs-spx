@@ -7,6 +7,7 @@ import { renderDetail, renderCalibration } from './ui/detail.js';
 import { renderEvents, renderKobeissi, renderAR, renderBacktest } from './ui/tables.js';
 import { drawPermutation, drawSectorStrip, drawCalibration } from './charts/numbers.js';
 import { credibility, threatDays } from './stats.js';
+import { el, fmtPct } from './format.js';
 import { renderDeadlines, renderForecasts } from './ui/forecast.js';
 
 const $ = (id) => document.getElementById(id);
@@ -60,6 +61,29 @@ function renderNumbers() {
   renderCalibration($('cal'), state.cal);
 }
 
+function renderKpis() {
+  const { permutation: { overall: o, draws }, backtest: bt } = state.study;
+  const tile = (v, of, k, n) => {
+    const t = el('div', 'kpi'), val = el('div', 'v', v);
+    if (of) val.append(el('span', 'of', ` ${of}`));
+    t.append(val, el('div', 'k', k), el('div', 'n', n));
+    return t;
+  };
+  const tiles = [
+    tile(`${o.event_mean_abs_ar.toFixed(2)}%`, `vs ${o.null_mean_abs_ar.toFixed(2)}%`, 'Mean |abnormal return|, event days vs random days',
+      `n=${o.n} · p ${o.p_value <= 1 / draws ? '< 0.001' : o.p_value.toFixed(3)}`),
+    tile(`${Math.round(bt.hit_rate * bt.n)}/${bt.n}`, `${fmtPct(bt.avg_ret)} avg`, '"TACO" trades that made money',
+      `n=${bt.n} · ${fmtPct(bt.avg_baseline)} avg SPX baseline`),
+  ];
+  const f = state.fc;
+  if (f) tiles.push(
+    tile(`${Math.round(f.base_rate * 100)}%`, null, 'Past deadlines he walked back or extended', `n=${f.n_resolved}`),
+    tile(f.backtest.brier.model.toFixed(3), `vs ${f.backtest.brier.base.toFixed(3)}`,
+      `Forecast Brier vs base rate: ${f.backtest.beats_base ? 'beats it' : 'does not beat it'}`, `n=${f.backtest.n} · lower is better`),
+  );
+  $('kpis').replaceChildren(...tiles);
+}
+
 async function init() {
   try {
     const [events, daily, kob, study, auto, cal] = await Promise.all([load('events'), load('daily'), load('kobeissi'), load('study'),
@@ -79,6 +103,7 @@ async function init() {
   renderScorecard(state.events, select);
   renderKobeissi($('kob-table'), state.kob, select);
   renderNumbers();
+  renderKpis();
   renderDeadlines($('deadlines'), state.fc);
   if (state.fc) renderForecasts(state.fc);
   renderSelected();
