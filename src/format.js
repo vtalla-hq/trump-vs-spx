@@ -6,13 +6,14 @@ export const fmtDate = (s) => d3.utcFormat('%b %-d, %Y')(toDate(s));
 export const fmtShort = (s) => d3.utcFormat("%b %-d '%y")(toDate(s));
 
 export const tagColor = {
-  'Followed through': '#059669',
-  'Walked back': '#d97706',
-  "Didn't check out": '#dc2626',
-  'Rhetoric': '#6b7280',
-  'False report': '#7c3aed',
-  'Report / rumor': '#7c3aed',
-  'Overruled': '#94a3b8',
+  // Promises get the three hues (validated on the dark surface); non-promises share one neutral.
+  'Followed through': '#199e70',
+  'Walked back': '#9085e9',
+  "Didn't check out": '#e66767',
+  'Rhetoric': '#7d7f8a',
+  'False report': '#7d7f8a',
+  'Report / rumor': '#7d7f8a',
+  'Overruled': '#7d7f8a',
 };
 export const tagOrder = ['Followed through', 'Walked back', "Didn't check out", 'Rhetoric', 'False report', 'Overruled'];
 export const tagLabel = {
@@ -24,7 +25,7 @@ export const tagLabel = {
   'Report / rumor': 'Fake news / rumor',
   'Overruled': 'Court',
 };
-export const colorFor = (tag) => tagColor[tag] || '#9ca3af';
+export const colorFor = (tag) => tagColor[tag] || '#7d7f8a';
 export const normTag = (t) => (t === 'Report / rumor' ? 'False report' : t);
 
 export function el(tag, cls, text) {
