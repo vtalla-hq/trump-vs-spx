@@ -24,8 +24,8 @@
   "did": "Did it. The tariffs took effect Mar 4; China's rate rose to 20%.",
   "tag": "Followed through",
   "context": "A weak ISM manufacturing survey the same morning.",
-  "source": "AP via Tiger",
-  "url": "https://itiger.com/news/2516669503",
+  "source": "AP via Anchorage Daily News",
+  "url": "https://www.adn.com/nation-world/2025/03/03/dow-drops-nearly-650-points-on-worries-that-trumps-latest-tariffs-on-canada-and-mexico-will-slow-the-economy-more/",
   "threat_day": false,
   "headline": "\"No room left\": tariffs go live"
  },
@@ -189,8 +189,8 @@
   "did": "Did it. The tariffs rolled out and the commissioner was fired.",
   "tag": "Followed through",
   "context": "A weak jobs report (73k jobs) and Amazon earnings hit the same day.",
-  "source": "WTOP / AP",
-  "url": "https://wtop.com/news/2025/08/how-major-us-stock-indexes-fared-friday-8-1-2025",
+  "source": "PBS NewsHour / AP",
+  "url": "https://www.pbs.org/newshour/economy/wall-street-slumps-and-bond-yields-sink-following-weak-hiring-numbers-and-new-tariffs",
   "threat_day": false,
   "headline": "Tariffs roll out, BLS chief fired"
  },
@@ -324,8 +324,8 @@
   "did": "Did it. The S&P hit a record a week later.",
   "tag": "Followed through",
   "context": "Oil fell below $95.",
-  "source": "Hargreaves Lansdown",
-  "url": "https://www.hl.co.uk/shares/stock-market-news/market-reports/us-close-stocks-rebound-as-trump-agrees-two-week-truce-with-iran",
+  "source": "Global News / AP",
+  "url": "https://globalnews.ca/news/11769238/wall-street-global-markets-soar/",
   "threat_day": false,
   "headline": "Iran ceasefire"
  },
