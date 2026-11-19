@@ -48,7 +48,7 @@ export function drawSectorStrip(box, rows, sectors, onSelect) {
 
 /** Reliability diagram: predicted p vs observed walk-back rate per bin, dot area ∝ n. */
 export function drawCalibration(box, bins) {
-  const H = 220, mt = 10, mb = 30, mr = 12;
+  const H = 220, mt = 10, mb = 30, mr = 22; // room for the centered "100%" tick
   const { svg, W } = svgFor(box, H);
   const y = d3.scaleLinear([0, 1], [H - mb, mt]);
   const ml = leftAxis(svg, y, W, mr, 4, d3.format('.0%'));
