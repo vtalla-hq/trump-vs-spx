@@ -71,3 +71,12 @@ details p { margin: 4px 0; }
   .hide-sm { display: none; }
   .chart { min-height: 260px; }
 }
+h2.sec { font-family: var(--serif); font-weight: 400; font-size: 1.5rem; margin: 28px 0 0; }
+.note { color: var(--muted); font-size: 12px; margin: 8px 0 0; }
+.pill.auto { color: var(--fg); background: transparent; border: 1px dashed var(--muted); }
+.pill.auto::before { display: none; }
+.legend i.auto-key { background: transparent !important; border: 1px dashed #111; }
+table.cm td, table.cm th { text-align: center; padding: 3px 5px; }
+table.cm td:first-child, table.cm th:first-child { text-align: left; }
+table.cm td.diag { font-weight: 600; background: var(--grid); }
+table.cm tbody tr, table.cm tr { cursor: default; }

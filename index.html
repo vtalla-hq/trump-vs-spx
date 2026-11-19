@@ -47,6 +47,7 @@
         <span><i data-tag="Didn't check out"></i>False claim</span>
         <span><i data-tag="False report"></i>Fake news / rumor</span>
         <span><i data-tag="Overruled"></i>Court</span>
+        <span><i class="auto-key"></i>Auto-detected</span>
       </div>
       <div class="chart" id="timeline"></div>
     </section>
@@ -84,9 +85,53 @@
       </div>
     </section>
 
+    <h2 class="sec">The numbers</h2>
+    <p class="sub">Abnormal return (AR) = the day's return minus the S&amp;P's mean daily return over trading days −120 to −11. σ = AR divided by that window's standard deviation. CAR = AR summed over the window. Small samples: read these as descriptive, not proof.</p>
+
+    <section class="card">
+      <h2>Abnormal returns by event (n=<span id="ar-n"></span>)</h2>
+      <div class="list">
+        <table>
+          <thead><tr><th>Date</th><th>Event</th><th>AR</th><th>σ</th><th class="hide-sm">CAR 0,+1</th><th class="hide-sm">CAR 0,+5</th><th class="hide-sm">ΔVIX</th><th class="hide-sm">Δ10Y bp</th></tr></thead>
+          <tbody id="ar-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="row2">
+      <section class="card">
+        <h2>Are event days bigger than random days?</h2>
+        <div class="chart sm" id="perm"></div>
+        <p class="note" id="perm-cap"></p>
+      </section>
+      <section class="card">
+        <h2>Sector abnormal returns on day 0 (vs S&amp;P beta)</h2>
+        <div class="chart" id="sectors" style="min-height:0"></div>
+        <p class="note">Blue = beat what its S&amp;P beta implied, red = lagged. Market model fit on days −120 to −11. Tap a cell for the event.</p>
+      </section>
+    </div>
+
+    <section class="card">
+      <h2>"TACO" backtest: buy the threat, sell the walk-back</h2>
+      <div class="list">
+        <table>
+          <thead><tr><th>Entry</th><th>Threat</th><th>Hold</th><th>Return</th><th class="hide-sm">Avg SPX, same hold</th><th>Excess</th></tr></thead>
+          <tbody id="bt-table"></tbody>
+        </table>
+      </div>
+      <p class="note" id="bt-cap"></p>
+      <p class="note">* no walk-back, exited after 5 trading days. "Avg SPX, same hold" = mean S&amp;P return over every holding period of that length since 2024. Close-to-close, no costs.</p>
+    </section>
+
+    <section class="card">
+      <h2>How reliable is the auto-tagger?</h2>
+      <p class="note" style="margin:0 0 4px">Days with |standardized AR| &gt; 2 are scraped and tagged by an LLM. Before trusting it, it was run blind on the hand-labeled days above.</p>
+      <div id="cal"></div>
+    </section>
+
     <details>
       <summary>Method</summary>
-      <p>Line: S&amp;P 500 monthly average close. Dots: event days, sized by that day's % move (from the linked news report).</p>
+      <p>Line: S&amp;P 500 daily close (Yahoo Finance). Dots: event days, sized by that day's % move (from the linked news report).</p>
       <p>One day's move isn't proof of cause. Each event lists what else happened that day.</p>
     </details>
   </main>

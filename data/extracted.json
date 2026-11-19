@@ -1,0 +1,242 @@
+{
+ "openai/gpt-oss-120b|2025-03-10": {
+  "trump_related": true,
+  "confidence": 0.78,
+  "said": "\"I hate to predict things like that,\" Trump told Fox News, adding \"there is a period of transition, because what we're doing is very big. We're bringing wealth back to America.\"",
+  "did": "The S&P 500 fell 3.1%, marking the worst trading day of the year amid tariff and recession concerns.",
+  "tag": "Rhetoric",
+  "topic": "Recession talk",
+  "context": "Investors were spooked by looming U.S. tariffs and the prospect of a recession.",
+  "headline": "Stocks tumble on tariff and recession fears"
+ },
+ "openai/gpt-oss-120b|2025-04-07": {
+  "trump_related": true,
+  "confidence": 0.92,
+  "said": "No actual statement; a rumor claimed Trump was considering a 90‑day pause on tariffs for all countries except China.",
+  "did": "The rumor sparked a rapid rally that added $2.4 trillion to the S&P 500 before the market erased the gains within minutes.",
+  "tag": "False report",
+  "topic": "Tariffs",
+  "context": "No significant economic data or earnings released that day; the swing was driven almost entirely by the false tariff‑pause rumor.",
+  "headline": "False tariff pause rumor spikes market"
+ },
+ "openai/gpt-oss-120b|2025-04-09": {
+  "trump_related": true,
+  "confidence": 0.96,
+  "said": "President Trump announced a 90‑day pause on most tariffs while raising tariffs on China.",
+  "did": "The pause on most tariffs was implemented and China tariffs were increased, sending the S&P 500 up 9.5%.",
+  "tag": "Followed through",
+  "topic": "Tariffs",
+  "context": "Treasury yields fell and House Republicans postponed a budget framework vote.",
+  "headline": "Trump pauses tariffs, markets rally"
+ },
+ "openai/gpt-oss-120b|2025-05-12": {
+  "trump_related": false,
+  "confidence": 0.8,
+  "said": "No specific Trump statement drove the market.",
+  "did": "No direct Trump action affected the S&P 500 that day.",
+  "tag": "Rhetoric",
+  "topic": "Other",
+  "context": "The S&P 500 moved over 1% as the Fed’s policy pause and cooling GenAI hype weighed on valuations.",
+  "headline": "Fed pause cools GenAI rally"
+ },
+ "openai/gpt-oss-120b|2025-05-27": {
+  "trump_related": true,
+  "confidence": 0.95,
+  "said": "President Trump announced via Truth Social that he would delay the 50% tariff on EU goods until July 9.",
+  "did": "The tariff delay was confirmed, and the S&P 500 rose about 2% that day.",
+  "tag": "Walked back",
+  "topic": "Tariffs",
+  "context": "No major economic data released; the market rally was driven primarily by the tariff‑delay news.",
+  "headline": "Trump pauses EU tariffs, S&P jumps"
+ },
+ "openai/gpt-oss-120b|2025-07-07": {
+  "trump_related": true,
+  "confidence": 0.95,
+  "said": "Trump announced in letters that 25% tariffs will be imposed on imports from Japan and South Korea starting Aug. 1.",
+  "did": "The S&P 500 fell about 0.8% to 6,229.98 as investors reacted to the tariff threat.",
+  "tag": "Rhetoric",
+  "topic": "Tariffs",
+  "context": "Broader trade‑war concerns and the market’s proximity to record highs also weighed on sentiment.",
+  "headline": "Trump announces tariffs, stocks slide"
+ },
+ "openai/gpt-oss-120b|2026-01-20": {
+  "trump_related": true,
+  "confidence": 0.9,
+  "said": "Trump threatened to impose tariffs on eight European countries over his push to control Greenland.",
+  "did": "The threat triggered a 2.1% drop in the S&P 500 as markets sold off.",
+  "tag": "Rhetoric",
+  "topic": "Tariffs",
+  "context": "No major economic data or earnings were released, so the sell‑off was attributed mainly to Trump's tariff threat.",
+  "headline": "Trump threatens tariffs, markets tumble"
+ },
+ "openai/gpt-oss-120b|2026-03-02": {
+  "trump_related": false,
+  "confidence": 0.9,
+  "said": "",
+  "did": "",
+  "tag": "Rhetoric",
+  "topic": "Iran war",
+  "context": "Geopolitical tension from US‑Israeli strikes on Iran and rising casualties.",
+  "headline": "Markets flat after US‑Israeli Iran strikes"
+ },
+ "openai/gpt-oss-120b|2026-03-09": {
+  "trump_related": false,
+  "confidence": 0.9,
+  "said": "",
+  "did": "",
+  "tag": "Rhetoric",
+  "topic": "Iran war",
+  "context": "Oil prices surged to near $120 then fell back, driving volatility alongside war‑related uncertainty.",
+  "headline": "Oil volatility fuels market swing"
+ },
+ "openai/gpt-oss-120b|2026-03-12": {
+  "trump_related": false,
+  "confidence": 0.92,
+  "said": "",
+  "did": "Oil prices surged above $100 a barrel as fears of an Iran war intensified, sending the S&P 500 down 1.5%.",
+  "tag": "Rhetoric",
+  "topic": "Iran war",
+  "context": "Higher Treasury yields and expectations of fewer Fed rate cuts also weighed on markets.",
+  "headline": "Iran war worries push stocks lower"
+ },
+ "openai/gpt-oss-120b|2026-03-20": {
+  "trump_related": false,
+  "confidence": 0.95,
+  "said": "",
+  "did": "",
+  "tag": "Rhetoric",
+  "topic": "Fed",
+  "context": "Rising oil prices spurred Treasury yields higher and erased hopes of a Fed rate cut.",
+  "headline": "Oil surge crushes stocks, Fed hopes fade"
+ },
+ "openai/gpt-oss-120b|2026-03-26": {
+  "trump_related": false,
+  "confidence": 0.92,
+  "said": "",
+  "did": "",
+  "tag": "Rhetoric",
+  "topic": "Iran war",
+  "context": "Iran rejected a U.S. ceasefire offer, pushing oil up 4% and yields higher, driving the market slide.",
+  "headline": "Stocks tumble as Iran ceasefire fails"
+ },
+ "openai/gpt-oss-120b|2026-03-27": {
+  "trump_related": false,
+  "confidence": 0.9,
+  "said": "",
+  "did": "",
+  "tag": "Rhetoric",
+  "topic": "Iran war",
+  "context": "Investors feared the Iran war would disrupt Gulf energy supplies, spurring inflation concerns.",
+  "headline": "Iran war fuels market slump"
+ },
+ "openai/gpt-oss-120b|2026-03-31": {
+  "trump_related": false,
+  "confidence": 0.92,
+  "said": "",
+  "did": "",
+  "tag": "Rhetoric",
+  "topic": "Iran war",
+  "context": "Oil prices fell and optimism about a possible end to the Iran war lifted equities.",
+  "headline": "Stocks rally on Iran war hopes"
+ },
+ "openai/gpt-oss-120b|2026-04-08": {
+  "trump_related": true,
+  "confidence": 0.95,
+  "said": "We are calling for a two‑week cease‑fire in Iran.",
+  "did": "Trump announced a two‑week cease‑fire, prompting a market rally.",
+  "tag": "Walked back",
+  "topic": "Iran war",
+  "context": "Oil prices fell below $95 a barrel, easing energy costs.",
+  "headline": "Trump pulls back on Iran threat"
+ },
+ "openai/gpt-oss-120b|2026-04-22": {
+  "trump_related": false,
+  "confidence": 0.92,
+  "said": "",
+  "did": "The S&P 500 rose 1% to a new all‑time high, with the Dow up 0.7% and Nasdaq up 1.6%.",
+  "tag": "Rhetoric",
+  "topic": "Iran war",
+  "context": "Strong earnings from GE Vernova and other firms boosted stocks, while rising Brent crude to over $102 added caution amid Iran war uncertainty.",
+  "headline": "Stocks hit records as profits surge"
+ },
+ "openai/gpt-oss-120b|2026-06-05": {
+  "trump_related": false,
+  "confidence": 0.9,
+  "said": "",
+  "did": "",
+  "tag": "Rhetoric",
+  "topic": "Fed",
+  "context": "Strong jobs report lifted bond yields and Fed rate‑hike expectations, while a tech sell‑off dragged indexes lower.",
+  "headline": "Tech slump, Fed rate worries"
+ },
+ "openai/gpt-oss-120b|2026-06-10": {
+  "trump_related": false,
+  "confidence": 0.85,
+  "said": "President Donald Trump warned that the United States may take \"more strikes\" against Iran if Tehran continues its hostile actions.",
+  "did": "Oil prices rose after his threat, but the S&P 500’s 1.6% drop was driven mainly by a broad sell‑off in artificial‑intelligence stocks.",
+  "tag": "Rhetoric",
+  "topic": "Iran war",
+  "context": "A sharp correction in over‑valued AI stocks pulled the market lower, outweighing any impact from Trump’s Iran comments.",
+  "headline": "AI sell‑off eclipses Trump Iran threat"
+ },
+ "openai/gpt-oss-120b|2026-07-08": {
+  "trump_related": true,
+  "confidence": 0.94,
+  "said": "\"The agreement to pause fighting is over,\" Trump said, adding later that the recent clashes did not signal a return to full‑scale war.",
+  "did": "His comments triggered a sell‑off, sending the S&P 500 down 0.3% and the Dow down 1.1%.",
+  "tag": "Rhetoric",
+  "topic": "Iran war",
+  "context": "Oil prices rose and global markets were shaky, adding pressure to U.S. equities.",
+  "headline": "Trump doubts Iran truce, markets tumble"
+ },
+ "openai/gpt-oss-120b|2026-10-30": {
+  "trump_related": false,
+  "confidence": 0.96,
+  "said": "",
+  "did": "The S&P 500 fell 1.8%, Nasdaq 2.9%, and Dow 1.1% as tech stocks slumped.",
+  "tag": "Rhetoric",
+  "topic": "Other",
+  "context": "Weak earnings from Intel and Amazon, AI spending concerns, and rising oil pressured stocks while yields fell.",
+  "headline": "Tech sell‑off as AI hype fades"
+ },
+ "openai/gpt-oss-120b|2026-11-04": {
+  "trump_related": false,
+  "confidence": 0.9,
+  "said": "No specific Trump statement was made.",
+  "did": "The S&P 500 jumped 1.6% as stocks rallied after the midterm election results.",
+  "tag": "Rhetoric",
+  "topic": "Other",
+  "context": "Midterm election outcomes, gains in hospital and low‑income retailer stocks, falling oil prices and easing Treasury yields drove the market higher.",
+  "headline": "Stocks surge after midterm loss"
+ },
+ "openai/gpt-oss-120b|2026-11-05": {
+  "trump_related": false,
+  "confidence": 0.92,
+  "said": "",
+  "did": "",
+  "tag": "Rhetoric",
+  "topic": "Other",
+  "context": "AI data‑center stocks fell on fears of regulatory moratoriums after Democratic midterm wins.",
+  "headline": "AI data‑center sell‑off drags markets"
+ },
+ "openai/gpt-oss-120b|2026-11-09": {
+  "trump_related": false,
+  "confidence": 0.95,
+  "said": "",
+  "did": "",
+  "tag": "Rhetoric",
+  "topic": "Other",
+  "context": "Oil prices fell sharply and concerns over AI data‑center construction after Democratic wins lifted stocks.",
+  "headline": "Stocks rally on oil dip, AI worries"
+ },
+ "openai/gpt-oss-120b|2026-11-16": {
+  "trump_related": false,
+  "confidence": 0.9,
+  "said": "",
+  "did": "",
+  "tag": "Rhetoric",
+  "topic": "Other",
+  "context": "Nvidia's CEO resignation sparked a tech sell‑off, pulling down the Nasdaq and S&P 500, while oil prices and Treasury yields fell.",
+  "headline": "Tech sell‑off drags S&P lower"
+ }
+}
