@@ -5,6 +5,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      # The prediction ledger is append-only: nothing in this push/PR may change or delete an existing row.
+      - name: Ledger is append-only
+        run: |
+          base="${{ github.event.pull_request.base.sha || github.event.before }}"
+          if git cat-file -e "$base^{commit}" 2>/dev/null; then
+            ! git diff "$base" HEAD -- data/predictions.jsonl | grep -E '^-[^-]'
+          fi
       - uses: actions/setup-python@v5
         with: { python-version: "3.13", cache: pip }
       - run: pip install -r requirements.txt
