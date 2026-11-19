@@ -97,7 +97,8 @@ def main():
     load = lambda p: json.load(open(p)) if os.path.exists(p) else []
     cache = {r["date"]: r for r in load(OUT)}
     gold = {e["date"]: e["url"] for e in load(os.path.join(ROOT, "public", "data", "events.json"))}
-    dates = sorted({r["date"] for r in load(os.path.join(ROOT, "data", "candidates.json"))} | set(gold))
+    latest = load(os.path.join(ROOT, "public", "data", "daily.json"))[-1:]  # latest session: news for watch.py's deadline updates
+    dates = sorted({r["date"] for r in load(os.path.join(ROOT, "data", "candidates.json"))} | set(gold) | {r["date"] for r in latest})
     week_ago = str(dt.date.today() - dt.timedelta(days=7))
     todo = [d for d in dates if d not in cache or (cache[d].get("missing") and cache[d]["tried"] < week_ago)]
     new = [d for d in todo if d not in cache]

@@ -51,20 +51,24 @@ Read the story and return ONE JSON object with exactly these keys:
 If the day was not driven by Trump, set trump_related false and still fill every field with your best guess."""
 
 
-def ask(story, key, tries=6):
+def groq_json(system, user, key, label="", tries=6):
+    """One Groq chat call in JSON mode at temperature 0, with backoff on 429/5xx."""
     body = {"model": MODEL, "temperature": 0, "response_format": {"type": "json_object"},
-            "messages": [{"role": "system", "content": SYSTEM},
-                         {"role": "user", "content": f"Date: {story['date']}\nTitle: {story['title']}\n\n{story['text']}"}]}
+            "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}
     for k in range(tries):
         r = requests.post(URL, json=body, headers={"Authorization": f"Bearer {key}"}, timeout=60)
         if r.status_code == 429 or r.status_code >= 500:
             wait = float(r.headers.get("retry-after") or 2 ** k)
-            print(f"  {story['date']}: HTTP {r.status_code}, retrying in {wait:.0f}s")
+            print(f"  {label}: HTTP {r.status_code}, retrying in {wait:.0f}s")
             time.sleep(wait)
             continue
         r.raise_for_status()
         return json.loads(r.json()["choices"][0]["message"]["content"])
-    raise RuntimeError(f"{story['date']}: gave up after {tries} tries")
+    raise RuntimeError(f"{label}: gave up after {tries} tries")
+
+
+def ask(story, key):
+    return groq_json(SYSTEM, f"Date: {story['date']}\nTitle: {story['title']}\n\n{story['text']}", key, story["date"])
 
 
 def kappa(a, b):
