@@ -1,0 +1,354 @@
+{
+ "generated": "2026-11-19T22:38:22+00:00",
+ "model_version": "wb-logit-l2-v1/move-boot-v1",
+ "last_price_date": "2026-11-19",
+ "n_resolved": 12,
+ "base_rate": 0.8333,
+ "coef": {
+  "intercept": 2.1036,
+  "is_tariff": 0.0,
+  "log_threat": 0.1436,
+  "days_to_deadline": 0.2314,
+  "car_since": 0.2279,
+  "d10y_bps": 0.0644,
+  "dvix": 0.0837,
+  "prior_wb_same_target": 0.5774
+ },
+ "pending": [
+  {
+   "id": "p02",
+   "said": "Section 232 polysilicon action: minimum import price plus a 15% duty from Dec 4.",
+   "target": "Global",
+   "topic": "Tariffs",
+   "announced": "2026-08-06",
+   "deadline": "2026-12-04",
+   "source_url": "https://tariffsapi.com/articles/us-tariff-changes-coming-november-2026-to-february-2027",
+   "origin": "hand",
+   "type": "prediction",
+   "kind": "deadline",
+   "ts": "2026-11-19T22:38:22+00:00",
+   "date": "2026-11-19",
+   "model_version": "wb-logit-l2-v1/move-boot-v1",
+   "inputs": {
+    "is_tariff": 1.0,
+    "log_threat": 2.7726,
+    "days_to_deadline": 15.0,
+    "car_since": -13.8084,
+    "d10y_bps": 43.5,
+    "dvix": 12.63,
+    "prior_wb_same_target": 2.0
+   },
+   "n_train": 12,
+   "p_walkback": 0.8767,
+   "p_base": 0.8333,
+   "market": null,
+   "move": {
+    "mean": 0.7015,
+    "lo": -1.3381,
+    "hi": 2.0863,
+    "n_wb": 10,
+    "n_ft": 2
+   },
+   "move_target": "S&P AR on the day it resolves (%)"
+  },
+  {
+   "id": "p01",
+   "said": "Busan trade truce with China extended two months to Jan 10, 2027.",
+   "target": "China",
+   "topic": "Tariffs",
+   "announced": "2026-09-23",
+   "deadline": "2027-01-10",
+   "source_url": "https://investinglive.com/news/us-and-china-extend-busan-trade-truce-to-january-10-as-xi-arrives-for-trump-summit/",
+   "origin": "hand",
+   "type": "prediction",
+   "kind": "deadline",
+   "ts": "2026-11-19T22:38:22+00:00",
+   "date": "2026-11-19",
+   "model_version": "wb-logit-l2-v1/move-boot-v1",
+   "inputs": {
+    "is_tariff": 1.0,
+    "log_threat": 3.2189,
+    "days_to_deadline": 52.0,
+    "car_since": -10.5026,
+    "d10y_bps": 8.4,
+    "dvix": 14.23,
+    "prior_wb_same_target": 3.0
+   },
+   "n_train": 12,
+   "p_walkback": 0.9464,
+   "p_base": 0.8333,
+   "market": {
+    "venue": "kalshi",
+    "id": "KXUSCHINATRUCE-27JAN11-27JAN11",
+    "yes_means_walkback": true,
+    "bid": 0.75,
+    "ask": 0.85,
+    "volume": 0.0,
+    "p_walkback": 0.8
+   },
+   "move": {
+    "mean": 0.8756,
+    "lo": -1.1419,
+    "hi": 2.0863,
+    "n_wb": 10,
+    "n_ft": 2
+   },
+   "move_target": "S&P AR on the day it resolves (%)"
+  },
+  {
+   "id": "p03",
+   "said": "Foreign firms have about 18 months to build US factories or face 150-300% tariffs.",
+   "target": "South Korea/China/Japan/Canada",
+   "topic": "Tariffs",
+   "announced": "2026-10-05",
+   "deadline": "2028-04-03",
+   "source_url": "https://businessupturn.com/trade-policy/united-states/trump-300-percent-tariff-factory-ultimatum-no-legal-authority/",
+   "origin": "hand",
+   "type": "prediction",
+   "kind": "deadline",
+   "ts": "2026-11-19T22:38:22+00:00",
+   "date": "2026-11-19",
+   "model_version": "wb-logit-l2-v1/move-boot-v1",
+   "inputs": {
+    "is_tariff": 1.0,
+    "log_threat": 5.7071,
+    "days_to_deadline": 501.0,
+    "car_since": -8.975,
+    "d10y_bps": -22.5,
+    "dvix": 13.13,
+    "prior_wb_same_target": 0.0
+   },
+   "n_train": 12,
+   "p_walkback": 0.9604,
+   "p_base": 0.8333,
+   "market": null,
+   "move": {
+    "mean": 0.9106,
+    "lo": -1.1419,
+    "hi": 2.0863,
+    "n_wb": 10,
+    "n_ft": 2
+   },
+   "move_target": "S&P AR on the day it resolves (%)"
+  }
+ ],
+ "statements": [],
+ "backtest": {
+  "n": 6,
+  "n_resolved": 12,
+  "min_train": 4,
+  "preds": [
+   {
+    "id": "d08",
+    "announced": "2025-05-27",
+    "y": 1,
+    "n_train": 4,
+    "p": 0.3987,
+    "base": 0.75
+   },
+   {
+    "id": "d05",
+    "announced": "2025-07-07",
+    "y": 0,
+    "n_train": 4,
+    "p": 0.6813,
+    "base": 0.75
+   },
+   {
+    "id": "d11",
+    "announced": "2025-08-11",
+    "y": 1,
+    "n_train": 7,
+    "p": 0.3869,
+    "base": 0.7143
+   },
+   {
+    "id": "d06",
+    "announced": "2025-10-10",
+    "y": 1,
+    "n_train": 8,
+    "p": 0.9419,
+    "base": 0.75
+   },
+   {
+    "id": "d12",
+    "announced": "2025-10-30",
+    "y": 1,
+    "n_train": 9,
+    "p": 0.9898,
+    "base": 0.7778
+   },
+   {
+    "id": "d07",
+    "announced": "2026-01-20",
+    "y": 1,
+    "n_train": 10,
+    "p": 0.8566,
+    "base": 0.8
+   }
+  ],
+  "calibration": [
+   {
+    "lo": 0.2,
+    "hi": 0.4,
+    "n": 2,
+    "mean_p": 0.3928,
+    "observed": 1.0
+   },
+   {
+    "lo": 0.6,
+    "hi": 0.8,
+    "n": 1,
+    "mean_p": 0.6813,
+    "observed": 0.0
+   },
+   {
+    "lo": 0.8,
+    "hi": 1,
+    "n": 3,
+    "mean_p": 0.9294,
+    "observed": 1.0
+   }
+  ],
+  "brier": {
+   "model": 0.2043,
+   "base": 0.1431
+  },
+  "logloss": {
+   "model": 0.5396,
+   "base": 0.4621
+  },
+  "beats_base": false
+ },
+ "moves": {
+  "by_topic": {
+   "Fed": {
+    "n": 1,
+    "mean": -2.2971,
+    "mean_lo": -2.2971,
+    "mean_hi": -2.2971,
+    "lo": -2.2971,
+    "hi": -2.2971
+   },
+   "Iran war": {
+    "n": 6,
+    "mean": 1.1555,
+    "mean_lo": 0.5061,
+    "mean_hi": 1.7661,
+    "lo": -0.1796,
+    "hi": 2.7154
+   },
+   "Recession talk": {
+    "n": 1,
+    "mean": -2.7657,
+    "mean_lo": -2.7657,
+    "mean_hi": -2.7657,
+    "lo": -2.7657,
+    "hi": -2.7657
+   },
+   "Tariffs": {
+    "n": 16,
+    "mean": -0.2428,
+    "mean_lo": -1.3386,
+    "mean_hi": 0.9416,
+    "lo": -3.8745,
+    "hi": 2.7012
+   }
+  },
+  "by_tag": {
+   "Didn't check out": {
+    "n": 1,
+    "mean": 0.7838,
+    "mean_lo": 0.7838,
+    "mean_hi": 0.7838,
+    "lo": 0.7838,
+    "hi": 0.7838
+   },
+   "False report": {
+    "n": 1,
+    "mean": -0.2194,
+    "mean_lo": -0.2194,
+    "mean_hi": -0.2194,
+    "lo": -0.2194,
+    "hi": -0.2194
+   },
+   "Followed through": {
+    "n": 10,
+    "mean": -0.8551,
+    "mean_lo": -1.9764,
+    "mean_hi": 0.2533,
+    "lo": -4.9443,
+    "hi": 2.5954
+   },
+   "Overruled": {
+    "n": 1,
+    "mean": 0.6369,
+    "mean_lo": 0.6369,
+    "mean_hi": 0.6369,
+    "lo": 0.6369,
+    "hi": 0.6369
+   },
+   "Report / rumor": {
+    "n": 1,
+    "mean": 2.9155,
+    "mean_lo": 2.9155,
+    "mean_hi": 2.9155,
+    "lo": 2.9155,
+    "hi": 2.9155
+   },
+   "Rhetoric": {
+    "n": 2,
+    "mean": -2.5314,
+    "mean_lo": -2.7657,
+    "mean_hi": -2.2971,
+    "lo": -2.7188,
+    "hi": -2.344
+   },
+   "Walked back": {
+    "n": 8,
+    "mean": 0.9352,
+    "mean_lo": -0.5882,
+    "mean_hi": 2.7304,
+    "lo": -2.3659,
+    "hi": 4.3177
+   }
+  },
+  "resolution_day": {
+   "walked_back": {
+    "n": 10,
+    "mean": 1.0096,
+    "mean_lo": -0.1228,
+    "mean_hi": 2.2972,
+    "lo": -0.9287,
+    "hi": 2.8301
+   },
+   "followed_through": {
+    "n": 2,
+    "mean": -1.4905,
+    "mean_lo": -1.643,
+    "mean_hi": -1.3381,
+    "lo": -1.6125,
+    "hi": -1.3685
+   }
+  },
+  "coverage": {
+   "n": 12,
+   "hit_rate": 0.8333,
+   "target": 0.8
+  }
+ },
+ "live": {
+  "track": [],
+  "n": 0,
+  "n_market": 0,
+  "brier": {
+   "model": null,
+   "base": null,
+   "market": null,
+   "model_on_market_n": null
+  },
+  "calibration": [],
+  "statements": [],
+  "ledger_rows": 3
+ }
+}
