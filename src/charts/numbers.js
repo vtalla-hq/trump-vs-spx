@@ -45,3 +45,27 @@ export function drawSectorStrip(box, rows, sectors, onSelect) {
   svg.selectAll('text.d').data(rows.filter((r, i) => i % every === 0)).join('text').attr('class', 'd')
     .attr('x', (r) => x(r.id)).attr('y', H - 6).text((r) => fmtShort(r.date));
 }
+
+/** Reliability diagram: predicted p vs observed walk-back rate per bin, dot area ∝ n. */
+export function drawCalibration(box, bins) {
+  const H = 220, mt = 10, mb = 30, mr = 12;
+  const { svg, W } = svgFor(box, H);
+  const y = d3.scaleLinear([0, 1], [H - mb, mt]);
+  const ml = leftAxis(svg, y, W, mr, 4, d3.format('.0%'));
+  const x = d3.scaleLinear([0, 1], [ml, W - mr]);
+  const gx = svg.append('g').attr('transform', `translate(0,${H - mb})`)
+    .call(d3.axisBottom(x).ticks(5).tickFormat(d3.format('.0%')).tickSize(0).tickPadding(8));
+  styleAxis(gx);
+  svg.append('text').attr('x', W - mr).attr('y', H - 2).attr('text-anchor', 'end').text('predicted p(walk-back)');
+  svg.append('line').attr('x1', x(0)).attr('y1', y(0)).attr('x2', x(1)).attr('y2', y(1)).attr('stroke', 'var(--axis)').attr('stroke-dasharray', '4 4');
+  const r = d3.scaleSqrt([0, d3.max(bins, (b) => b.n) || 1], [0, 12]);
+  const tip = makeTip(box);
+  svg.selectAll('circle').data(bins).join('circle')
+    .attr('cx', (b) => x(b.mean_p)).attr('cy', (b) => y(b.observed)).attr('r', (b) => Math.max(4, r(b.n)))
+    .attr('fill', '#111').attr('fill-opacity', 0.75)
+    .on('mousemove', (ev, b) => tip.show(ev, [['d', `n=${b.n}`], ['', `predicted ${d3.format('.0%')(b.mean_p)}, happened ${d3.format('.0%')(b.observed)}`]]))
+    .on('mouseleave', tip.hide);
+  svg.selectAll('text.n').data(bins).join('text').attr('class', 'n')
+    .attr('x', (b) => x(b.mean_p) + (b.mean_p > 0.8 ? -1 : 1) * (Math.max(4, r(b.n)) + 4)).attr('y', (b) => y(b.observed) + 4)
+    .attr('text-anchor', (b) => (b.mean_p > 0.8 ? 'end' : 'start')).text((b) => `n=${b.n}`);
+}

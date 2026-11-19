@@ -80,3 +80,12 @@ table.cm td, table.cm th { text-align: center; padding: 3px 5px; }
 table.cm td:first-child, table.cm th:first-child { text-align: left; }
 table.cm td.diag { font-weight: 600; background: var(--grid); }
 table.cm tbody tr, table.cm tr { cursor: default; }
+
+.deadlines { display: flex; gap: 8px; overflow-x: auto; margin-bottom: var(--gap); align-items: stretch; }
+.deadlines .k { flex: none; align-self: center; color: var(--muted); font-size: 12px; width: 5.5rem; }
+.deadlines .chip { flex: 0 0 15rem; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 8px 12px; }
+.chip .cd { font-family: var(--serif); font-size: 1.25rem; }
+.chip .cw { font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.chip .cp { font-size: 12px; color: var(--muted); }
+.verdict { font-size: 13px; font-weight: 600; margin: 0 0 var(--gap); }
+code { font-size: 12px; }

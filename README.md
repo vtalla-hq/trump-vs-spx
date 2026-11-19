@@ -28,7 +28,7 @@ npm run build    # outputs dist/
 Pipeline (Python 3.13, `pip install -r requirements.txt`; `GROQ_API_KEY` optional, the LLM step is skipped without it):
 
 ```bash
-python scripts/fetch_prices.py && python scripts/detect.py && python scripts/scrape.py && python scripts/extract.py && python scripts/event_study.py
+python scripts/fetch_prices.py && python scripts/detect.py && python scripts/scrape.py && python scripts/extract.py && python scripts/watch.py && python scripts/event_study.py && scripts/log_predictions.sh
 ```
 
 `.github/workflows/daily.yml` runs the same chain every weekday after the close and commits the JSON if it changed. `build.yml` validates every data file against its schema (`scripts/validate.py`) and warns on dead source links.
@@ -70,6 +70,20 @@ Data through Nov 19, 2026.
 | Auto-tagger topic agreement | 13 | 92%, Cohen's κ **0.87** |
 | Auto-tagger outcome-tag agreement | 13 | 23%, Cohen's κ **0.11** |
 
+## Forecasts
+
+- **What's tracked**: every deadline he sets (tariff start dates, ultimatums, expiring pauses) lives in `data/deadlines.json`. `scripts/watch.py` reads his Truth Social posts from the [trumpstruth.org](https://www.trumpstruth.org) RSS archive, has Groq flag market-relevant ones and extract deadlines, and updates pending deadlines' status from recent posts and AP stories.
+- **p(walk-back)**: L2-regularized logistic regression (topic, threat size, days to deadline, S&P CAR since the threat, Δ10Y, ΔVIX, prior walk-backs against the same target). Trained on one row per trading day a past deadline was pending, so it updates daily. "Walk-back" = walked back or extended.
+- **Expected move**: bootstrap 80% ranges of S&P abnormal returns by topic, tag and resolution outcome. No point forecast without a range.
+- **Ledger**: `data/predictions.jsonl` is append-only. Each forecast, resolution and move result is its own commit (`scripts/log_predictions.sh`), and CI fails if any existing row changes. Kalshi/Polymarket odds are logged next to ours where a matching market exists (only the China truce so far).
+
+| Backtest (walk-forward, announcement-day forecasts) | n | Model | Base rate |
+|---|---|---|---|
+| Brier score | 6 | 0.204 | **0.143** |
+| Log loss | 6 | 0.540 | **0.462** |
+
+The model does **not** beat the base rate. With 12 resolved deadlines (10 walked back or extended), "he backs down ~83% of the time" is the better forecast so far. The site says so next to every number.
+
 ## Limitations
 
 - **Selection bias.** The 24 events were picked partly *because* the market moved. That inflates the permutation result: it shows these days were unusual, not that Trump caused unusual days.
@@ -77,6 +91,7 @@ Data through Nov 19, 2026.
 - **Confounding.** Many event days also had macro data, earnings or oil shocks (see each event's "Also" note). Estimation windows overlap other events (e.g. the April 2025 cluster), which inflates σ and shrinks standardized ARs.
 - **Timing.** Close-to-close daily data can't separate a 9:37am post from the rest of the session.
 - **LLM tagging.** On the hand-labeled days, `openai/gpt-oss-120b` (Groq) matched the topic 92% of the time (κ 0.87) but the outcome tag only 23% (κ 0.11, n=13). Outcome tags need hindsight a same-day story lacks, so auto events are routed to review unless high-confidence. 8 of the 13 calibration texts are the hand-labeled event's own linked article (WTOP no longer hosts AP stories older than ~8 months), so they aren't from the exact production source. Numbers live in `public/data/calibration.json`.
+- **Forecasts.** 12 resolved deadlines, four of them the same rolling China truce, so they aren't independent. The model is fit on tariff deadlines only, so its Iran/Fed forecasts would be extrapolation. Market odds for the China truce come from a Kalshi quote with no trades yet.
 - One day's move isn't proof of cause. Each event has a "what else was going on" note so you can judge how much of a move was really Trump.
 
 ## Stack
