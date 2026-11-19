@@ -17,17 +17,17 @@ export function drawCredibility(box, rows, onSelect) {
   svg.append('line').attr('x1', ml).attr('x2', W - mr).attr('y1', y(0.5)).attr('y2', y(0.5))
     .attr('stroke', 'var(--axis)').attr('stroke-dasharray', '4 4');
   svg.append('path').datum(data).attr('d', d3.line().x((r) => x(r.t)).y((r) => y(r.rate)))
-    .attr('fill', 'none').attr('stroke', '#111').attr('stroke-width', 2).attr('stroke-linejoin', 'round').attr('stroke-linecap', 'round');
+    .attr('fill', 'none').attr('stroke', 'var(--fg)').attr('stroke-width', 2).attr('stroke-linejoin', 'round').attr('stroke-linecap', 'round');
 
   const tip = makeTip(box);
   svg.selectAll('circle').data(data).join('circle')
     .attr('cx', (r) => x(r.t)).attr('cy', (r) => y(r.rate)).attr('r', 4)
-    .attr('fill', (r) => colorFor(r.tag)).attr('stroke', '#fff').attr('stroke-width', 1.5).style('cursor', 'pointer')
+    .attr('fill', (r) => colorFor(r.tag)).attr('stroke', 'var(--panel)').attr('stroke-width', 1.5).style('cursor', 'pointer')
     .on('mousemove', (ev, r) => tip.show(ev, [['d', fmtDate(r.date)], ['', r.headline], ['', `${r.kept} of ${r.total} kept · ${d3.format('.0%')(r.rate)}`]]))
     .on('mouseleave', tip.hide)
     .on('click', (ev, r) => onSelect(r.id));
 
   const last = data[data.length - 1];
   svg.append('text').attr('x', x(last.t) + 8).attr('y', y(last.rate) + 4)
-    .style('fill', '#111').style('font-weight', 600).text(d3.format('.0%')(last.rate));
+    .style('fill', 'var(--fg)').style('font-weight', 600).text(d3.format('.0%')(last.rate));
 }

@@ -26,10 +26,10 @@ export function drawTimeline(box, spx, events, selected, onSelect) {
   };
 
   const grad = svg.append('defs').append('linearGradient').attr('id', 'area-fade').attr('x1', 0).attr('x2', 0).attr('y1', 0).attr('y2', 1);
-  [[0, 0.14], [0.5, 0.05], [1, 0]].forEach(([o, a]) => grad.append('stop').attr('offset', o).attr('stop-color', '#111').attr('stop-opacity', a));
+  [[0, 0.22], [0.5, 0.06], [1, 0]].forEach(([o, a]) => grad.append('stop').attr('offset', o).attr('stop-color', 'var(--accent)').attr('stop-opacity', a));
   svg.append('path').datum(pts).attr('d', d3.area().x((p) => x(p.t)).y0(H - mb).y1((p) => y(p.v))).attr('fill', 'url(#area-fade)');
   svg.append('path').datum(pts).attr('d', d3.line().x((p) => x(p.t)).y((p) => y(p.v)))
-    .attr('fill', 'none').attr('stroke', '#111').attr('stroke-width', 1.5).attr('stroke-linejoin', 'round').attr('stroke-linecap', 'round');
+    .attr('fill', 'none').attr('stroke', 'var(--accent)').attr('stroke-width', 1.5).attr('stroke-linejoin', 'round').attr('stroke-linecap', 'round');
 
   const r = d3.scaleSqrt([0, d3.max(evs, (d) => Math.abs(d.pct)) || 1], [4, 13]);
   const tip = makeTip(box);
@@ -38,7 +38,7 @@ export function drawTimeline(box, spx, events, selected, onSelect) {
     .join('circle')
     .attr('cx', (d) => x(d.t)).attr('cy', (d) => y(yAt(d.t))).attr('r', (d) => r(Math.abs(d.pct)))
     .attr('fill', (d) => colorFor(d.tag)).attr('fill-opacity', (d) => (selected && selected !== d.id ? 0.35 : 0.9))
-    .attr('stroke', (d) => (d.id === selected ? '#111' : d.auto ? '#111' : '#fff')).attr('stroke-width', (d) => (d.id === selected ? 2.5 : 1.5))
+    .attr('stroke', (d) => (d.id === selected || d.auto ? 'var(--fg)' : 'var(--panel)')).attr('stroke-width', (d) => (d.id === selected ? 2.5 : 1.5))
     .attr('stroke-dasharray', (d) => (d.auto ? '2 2' : null))
     .style('cursor', 'pointer')
     .on('mousemove', (ev, d) => tip.show(ev, [['d', fmtDate(d.date) + (d.auto ? ' · auto' : '')], ['', `${fmtPct(d.pct)}  ${d.headline}`]]))

@@ -16,10 +16,10 @@ export function drawPermutation(box, p) {
   styleAxis(gx);
   svg.selectAll('rect').data(bins).join('rect')
     .attr('x', (b) => x(b.x0)).attr('width', (b) => Math.max(0, x(b.x1) - x(b.x0) - 1))
-    .attr('y', (b) => y(b.c)).attr('height', (b) => y(0) - y(b.c)).attr('fill', '#d4d4d4');
+    .attr('y', (b) => y(b.c)).attr('height', (b) => y(0) - y(b.c)).attr('fill', 'var(--bar)');
   const xe = x(p.event_mean_abs_ar);
-  svg.append('line').attr('x1', xe).attr('x2', xe).attr('y1', mt - 6).attr('y2', H - mb).attr('stroke', '#dc2626').attr('stroke-width', 2);
-  svg.append('text').attr('x', xe - 4).attr('y', mt - 10).attr('text-anchor', 'end').style('fill', '#dc2626').style('font-weight', 600)
+  svg.append('line').attr('x1', xe).attr('x2', xe).attr('y1', mt - 6).attr('y2', H - mb).attr('stroke', 'var(--accent)').attr('stroke-width', 2);
+  svg.append('text').attr('x', xe - 4).attr('y', mt - 10).attr('text-anchor', 'end').style('fill', 'var(--accent)').style('font-weight', 600)
     .text(`event days ${p.event_mean_abs_ar.toFixed(2)}%`);
 }
 
@@ -30,7 +30,7 @@ export function drawSectorStrip(box, rows, sectors, onSelect) {
   const { svg, W } = svgFor(box, H);
   const x = d3.scaleBand(rows.map((r) => r.id), [ml, W - 4]).padding(0.08);
   const lim = d3.max(rows, (r) => d3.max(sectors, (s) => Math.abs(r.sectors[s].ar))) || 1;
-  const color = d3.scaleDiverging([-lim, 0, lim], (t) => d3.interpolateRdBu(t));
+  const color = d3.scaleDiverging([-lim, 0, lim], d3.interpolateRgbBasis(['#e66767', '#2c2c33', '#3987e5']))  // lagged / neutral / beat;
   const tip = makeTip(box);
   sectors.forEach((s, k) => {
     svg.append('text').attr('x', ml - 6).attr('y', mt + k * cell + cell / 2 + 4).attr('text-anchor', 'end').text(s);
@@ -62,7 +62,7 @@ export function drawCalibration(box, bins) {
   const tip = makeTip(box);
   svg.selectAll('circle').data(bins).join('circle')
     .attr('cx', (b) => x(b.mean_p)).attr('cy', (b) => y(b.observed)).attr('r', (b) => Math.max(4, r(b.n)))
-    .attr('fill', '#111').attr('fill-opacity', 0.75)
+    .attr('fill', 'var(--accent)').attr('fill-opacity', 0.85)
     .on('mousemove', (ev, b) => tip.show(ev, [['d', `n=${b.n}`], ['', `predicted ${d3.format('.0%')(b.mean_p)}, happened ${d3.format('.0%')(b.observed)}`]]))
     .on('mouseleave', tip.hide);
   svg.selectAll('text.n').data(bins).join('text').attr('class', 'n')
