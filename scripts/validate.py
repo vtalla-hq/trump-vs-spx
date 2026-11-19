@@ -63,9 +63,9 @@ def main():
                 code = requests.get(u, headers={"User-Agent": "Mozilla/5.0 (link check)"}, timeout=20, stream=True).status_code
             except requests.RequestException as e:
                 code = type(e).__name__
-            if code != 200:
+            if not (isinstance(code, int) and code < 400):
                 dead += 1
-                print(f"::warning::source link {code}: {u}")
+                print(f"::warning::source link {code}{' (maybe bot protection)' if code == 403 else ''}: {u}")
         print(f"links: {len(urls) - dead}/{len(urls)} OK (dead links are warnings, not failures)")
     sys.exit(1 if bad else 0)
 
