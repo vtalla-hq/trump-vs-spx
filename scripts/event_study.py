@@ -103,6 +103,10 @@ def main():
         assert e["date"] in idx, f"{e['id']} {e['date']} is not a trading day"
 
     rows = [event_row(e, idx[e["date"]], rets, px, A) for e in events]
+    # Auto-detected events get AR/CAR for the detail panel but stay out of the tests below.
+    auto = json.load(open(D + "auto_events.json")) if os.path.exists(D + "auto_events.json") else []
+    rows += [{**event_row(e, idx[e["date"]], rets, px, A), "auto": True} for e in auto
+             if e["date"] in idx and idx[e["date"]] + EST[0] >= 1]
 
     abs_ar = A.ar.abs().to_numpy()
     ev_idx = np.array([idx[e["date"]] for e in events])

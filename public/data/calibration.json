@@ -1,0 +1,99 @@
+{
+ "model": "openai/gpt-oss-120b",
+ "generated": "2026-11-19",
+ "n_gold": 24,
+ "n_scraped": 13,
+ "n_valid": 13,
+ "n_rejected": 0,
+ "text_sources": {
+  "WTOP / AP": 5,
+  "linked article": 8
+ },
+ "trump_related_recall": 0.615,
+ "tag": {
+  "n": 13,
+  "accuracy": 0.231,
+  "kappa": 0.11,
+  "labels": [
+   "Followed through",
+   "Walked back",
+   "Didn't check out",
+   "Rhetoric",
+   "False report"
+  ],
+  "confusion": [
+   [
+    0,
+    1,
+    0,
+    5,
+    0
+   ],
+   [
+    1,
+    1,
+    0,
+    1,
+    0
+   ],
+   [
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   [
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   [
+    0,
+    0,
+    0,
+    1,
+    1
+   ]
+  ]
+ },
+ "topic": {
+  "n": 13,
+  "accuracy": 0.923,
+  "kappa": 0.873,
+  "labels": [
+   "Tariffs",
+   "Iran war",
+   "Recession talk",
+   "Other"
+  ],
+  "confusion": [
+   [
+    5,
+    0,
+    0,
+    1
+   ],
+   [
+    0,
+    6,
+    0,
+    0
+   ],
+   [
+    0,
+    0,
+    1,
+    0
+   ],
+   [
+    0,
+    0,
+    0,
+    0
+   ]
+  ]
+ }
+}

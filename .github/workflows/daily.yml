@@ -1,0 +1,30 @@
+name: daily
+on:
+  schedule:
+    - cron: "37 21 * * 1-5"  # weekdays, after the 4pm ET close
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: daily
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.13", cache: pip }
+      - run: pip install -r requirements.txt
+      - run: python scripts/fetch_prices.py
+      - run: python scripts/detect.py
+      - run: python scripts/scrape.py
+      - run: python scripts/extract.py
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      - run: python scripts/event_study.py
+      - name: Commit data if it changed
+        run: |
+          git add public/data data
+          if git diff --cached --quiet; then echo "no changes"; exit 0; fi
+          git -c user.name="github-actions[bot]" -c user.email="41898699+github-actions[bot]@users.noreply.github.com" \
+            commit -m "Daily data update $(date -u +%F)"
+          git push

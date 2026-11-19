@@ -3,13 +3,14 @@ import { drawTimeline } from './charts/timeline.js';
 import { drawCredibility } from './charts/credibility.js';
 import { drawThreats } from './charts/threats.js';
 import { renderScorecard } from './ui/scorecard.js';
-import { renderDetail } from './ui/detail.js';
+import { renderDetail, renderCalibration } from './ui/detail.js';
 import { renderEvents, renderKobeissi, renderAR, renderBacktest } from './ui/tables.js';
 import { drawPermutation, drawSectorStrip } from './charts/numbers.js';
 import { credibility, threatDays } from './stats.js';
 
 const $ = (id) => document.getElementById(id);
-const state = { events: [], spx: [], kob: [], study: null, selected: null };
+const state = { events: [], auto: [], spx: [], kob: [], study: null, cal: null, selected: null };
+const handRows = () => state.study.events.filter((r) => !r.auto);
 const studyFor = (id) => state.study.events.find((r) => r.id === id);
 
 async function load(name) {
@@ -17,6 +18,7 @@ async function load(name) {
   if (!res.ok) throw new Error(`${name}: ${res.status}`);
   return res.json();
 }
+const loadOpt = (name, fallback) => load(name).catch(() => fallback);
 
 function select(id, scroll = false) {
   state.selected = id;
@@ -25,24 +27,24 @@ function select(id, scroll = false) {
 }
 
 function current() {
-  return state.events.find((r) => r.id === state.selected)
+  return [...state.events, ...state.auto].find((r) => r.id === state.selected)
     || [...state.events].sort((a, b) => Math.abs(b.pct) - Math.abs(a.pct))[0];
 }
 
 function renderSelected() {
   const r = current();
   renderDetail($('detail'), r, studyFor(r.id));
-  drawTimeline($('timeline'), state.spx, state.events, state.selected, select);
+  drawTimeline($('timeline'), state.spx, [...state.events, ...state.auto], state.selected, select);
   renderEvents($('events-table'), state.events, state.selected, select);
-  renderAR($('ar-table'), state.study.events, state.events, state.selected, select);
+  renderAR($('ar-table'), handRows(), state.events, state.selected, select);
 }
 
 function renderCharts() {
-  drawTimeline($('timeline'), state.spx, state.events, state.selected, select);
+  drawTimeline($('timeline'), state.spx, [...state.events, ...state.auto], state.selected, select);
   drawCredibility($('cred'), credibility(state.events), select);
   drawThreats($('decay'), threatDays(state.events), select);
   drawPermutation($('perm'), state.study.permutation.overall);
-  drawSectorStrip($('sectors'), state.study.events, Object.keys(state.study.events[0].sectors), select);
+  drawSectorStrip($('sectors'), handRows(), Object.keys(state.study.events[0].sectors), select);
 }
 
 function renderNumbers() {
@@ -52,12 +54,17 @@ function renderNumbers() {
     + Object.entries(p.by_topic).map(([t, v]) => `${t} (n=${v.n}) p ${fmtP(v.p_value)}`).join(' · ') + '.';
   $('bt-cap').textContent = `${bt.rule} ${bt.caveat} Sharpe ${bt.sharpe_annualized?.toFixed(1) ?? '—'} (annualized, n=${bt.n}).`;
   renderBacktest($('bt-table'), bt, state.events, select);
-  $('ar-n').textContent = state.study.events.length;
+  $('ar-n').textContent = handRows().length;
+  renderCalibration($('cal'), state.cal);
 }
 
 async function init() {
   try {
-    const [events, daily, kob, study] = await Promise.all([load('events'), load('daily'), load('kobeissi'), load('study')]);
+    const [events, daily, kob, study, auto, cal] = await Promise.all([load('events'), load('daily'), load('kobeissi'), load('study'),
+      loadOpt('auto_events', []), loadOpt('calibration', null)]);
+    const hand = new Set(events.map((r) => r.date));
+    state.auto = auto.filter((r) => !hand.has(r.date) && r.pct != null);
+    state.cal = cal;
     state.events = events.map((r) => ({ ...r, pct: Number(r.pct) })).sort((a, b) => (a.date < b.date ? -1 : 1));
     state.spx = daily.filter((r) => r.date >= '2025-01-01');
     state.kob = kob;

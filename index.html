@@ -47,6 +47,7 @@
         <span><i data-tag="Didn't check out"></i>False claim</span>
         <span><i data-tag="False report"></i>Fake news / rumor</span>
         <span><i data-tag="Overruled"></i>Court</span>
+        <span><i class="auto-key"></i>Auto-detected</span>
       </div>
       <div class="chart" id="timeline"></div>
     </section>
@@ -120,6 +121,12 @@
       </div>
       <p class="note" id="bt-cap"></p>
       <p class="note">* no walk-back, exited after 5 trading days. "Avg SPX, same hold" = mean S&amp;P return over every holding period of that length since 2024. Close-to-close, no costs.</p>
+    </section>
+
+    <section class="card">
+      <h2>How reliable is the auto-tagger?</h2>
+      <p class="note" style="margin:0 0 4px">Days with |standardized AR| &gt; 2 are scraped and tagged by an LLM. Before trusting it, it was run blind on the hand-labeled days above.</p>
+      <div id="cal"></div>
     </section>
 
     <details>

@@ -38,9 +38,10 @@ export function drawTimeline(box, spx, events, selected, onSelect) {
     .join('circle')
     .attr('cx', (d) => x(d.t)).attr('cy', (d) => y(yAt(d.t))).attr('r', (d) => r(Math.abs(d.pct)))
     .attr('fill', (d) => colorFor(d.tag)).attr('fill-opacity', (d) => (selected && selected !== d.id ? 0.35 : 0.9))
-    .attr('stroke', (d) => (d.id === selected ? '#111' : '#fff')).attr('stroke-width', (d) => (d.id === selected ? 2.5 : 1.5))
+    .attr('stroke', (d) => (d.id === selected ? '#111' : d.auto ? '#111' : '#fff')).attr('stroke-width', (d) => (d.id === selected ? 2.5 : 1.5))
+    .attr('stroke-dasharray', (d) => (d.auto ? '2 2' : null))
     .style('cursor', 'pointer')
-    .on('mousemove', (ev, d) => tip.show(ev, [['d', fmtDate(d.date)], ['', `${fmtPct(d.pct)}  ${d.headline}`]]))
+    .on('mousemove', (ev, d) => tip.show(ev, [['d', fmtDate(d.date) + (d.auto ? ' · auto' : '')], ['', `${fmtPct(d.pct)}  ${d.headline}`]]))
     .on('mouseleave', tip.hide)
     .on('click', (ev, d) => onSelect(d.id));
 }
