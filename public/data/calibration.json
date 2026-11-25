@@ -1,13 +1,13 @@
 {
  "model": "openai/gpt-oss-120b",
- "generated": "2026-11-21",
+ "generated": "2026-11-25",
  "n_gold": 24,
  "n_scraped": 13,
  "n_valid": 13,
  "n_rejected": 0,
  "text_sources": {
-  "linked article": 8,
-  "WTOP / AP": 5
+  "WTOP / AP": 5,
+  "linked article": 8
  },
  "trump_related_recall": 0.615,
  "tag": {
