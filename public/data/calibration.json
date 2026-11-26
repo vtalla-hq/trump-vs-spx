@@ -1,6 +1,6 @@
 {
  "model": "openai/gpt-oss-120b",
- "generated": "2026-11-25",
+ "generated": "2026-11-26",
  "n_gold": 24,
  "n_scraped": 13,
  "n_valid": 13,
