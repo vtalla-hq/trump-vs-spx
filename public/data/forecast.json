@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-26T03:44:15+00:00",
+ "generated": "2026-11-27T03:47:23+00:00",
  "model_version": "wb-logit-l2-v1/move-boot-v1",
  "last_price_date": "2026-11-25",
  "n_resolved": 12,
@@ -26,7 +26,7 @@
    "origin": "hand",
    "type": "prediction",
    "kind": "deadline",
-   "ts": "2026-11-26T03:44:15+00:00",
+   "ts": "2026-11-27T03:47:23+00:00",
    "date": "2026-11-25",
    "model_version": "wb-logit-l2-v1/move-boot-v1",
    "inputs": {
@@ -62,7 +62,7 @@
    "origin": "hand",
    "type": "prediction",
    "kind": "deadline",
-   "ts": "2026-11-26T03:44:15+00:00",
+   "ts": "2026-11-27T03:47:23+00:00",
    "date": "2026-11-25",
    "model_version": "wb-logit-l2-v1/move-boot-v1",
    "inputs": {
@@ -81,10 +81,10 @@
     "venue": "kalshi",
     "id": "KXUSCHINATRUCE-27JAN11-27JAN11",
     "yes_means_walkback": true,
-    "bid": 0.35,
-    "ask": 0.99,
+    "bid": 0.76,
+    "ask": 0.85,
     "volume": 0.0,
-    "p_walkback": 0.67
+    "p_walkback": 0.805
    },
    "move": {
     "mean": 0.8685,
@@ -106,7 +106,7 @@
    "origin": "hand",
    "type": "prediction",
    "kind": "deadline",
-   "ts": "2026-11-26T03:44:15+00:00",
+   "ts": "2026-11-27T03:47:23+00:00",
    "date": "2026-11-25",
    "model_version": "wb-logit-l2-v1/move-boot-v1",
    "inputs": {

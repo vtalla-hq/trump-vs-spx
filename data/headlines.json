@@ -2,27 +2,29 @@
  {
   "date": "2025-02-03",
   "missing": true,
-  "tried": "2026-11-19"
+  "tried": "2026-11-27"
  },
  {
   "date": "2025-02-21",
   "missing": true,
-  "tried": "2026-11-19"
+  "tried": "2026-11-27"
  },
  {
   "date": "2025-02-27",
   "missing": true,
-  "tried": "2026-11-19"
+  "tried": "2026-11-27"
  },
  {
   "date": "2025-03-03",
-  "missing": true,
-  "tried": "2026-11-19"
+  "source": "linked article",
+  "url": "https://www.adn.com/nation-world/2025/03/03/dow-drops-nearly-650-points-on-worries-that-trumps-latest-tariffs-on-canada-and-mexico-will-slow-the-economy-more/",
+  "title": "Dow drops nearly 650 points on worries that Trump’s latest tariffs on Canada and Mexico will slow the economy more",
+  "text": "NEW YORK — U.S. stocks tumbled Monday and wiped out even more of their gains since President Donald Trump ‘s election in November, after he said that tariffs announced earlier on Canada and Mexico would take effect within hours.\nThe S&P 500 dropped 1.8% after Trump said there was “no room left” for negotiations that could lower \nthe tariffs set to begin Tuesday for imports from Canada and Mexico\n. Trump had already delayed the tariffs once before to allow more time for talks.\nTrump’s announcement dashed hopes on Wall Street that he would choose a less painful path for global trade, and it followed the latest warning signal on the U.S. economy’s strength. Monday’s loss shaved the S&P 500’s gain since Election Day down to just over 1% from a peak of more than 6%. That rally had been built largely on hopes for policies from Trump that would strengthen the U.S. economy and businesses.\nThe Dow Jones Industrial Average dropped 649 points, or 1.5%, and the Nasdaq composite slumped 2.6%.\nMonday’s slide punctuated a rocky couple of weeks for Wall Street. After the S&P 500 set a record last month following a parade of fatter-than-expected profit reports from big U.S. companies, the market began diving following weaker-than-expected reports on the U.S. economy, including a couple showing U.S. households are getting much more pessimistic about inflation because of the threat of tariffs."
  },
  {
   "date": "2025-03-06",
   "missing": true,
-  "tried": "2026-11-19"
+  "tried": "2026-11-27"
  },
  {
   "date": "2025-03-10",
@@ -34,27 +36,27 @@
  {
   "date": "2025-03-14",
   "missing": true,
-  "tried": "2026-11-19"
+  "tried": "2026-11-27"
  },
  {
   "date": "2025-03-24",
   "missing": true,
-  "tried": "2026-11-19"
+  "tried": "2026-11-27"
  },
  {
   "date": "2025-03-28",
   "missing": true,
-  "tried": "2026-11-19"
+  "tried": "2026-11-27"
  },
  {
   "date": "2025-04-03",
   "missing": true,
-  "tried": "2026-11-19"
+  "tried": "2026-11-27"
  },
  {
   "date": "2025-04-04",
   "missing": true,
-  "tried": "2026-11-19"
+  "tried": "2026-11-27"
  },
  {
   "date": "2025-04-07",
@@ -73,22 +75,22 @@
  {
   "date": "2025-04-10",
   "missing": true,
-  "tried": "2026-11-19"
+  "tried": "2026-11-27"
  },
  {
   "date": "2025-04-16",
   "missing": true,
-  "tried": "2026-11-19"
+  "tried": "2026-11-27"
  },
  {
   "date": "2025-04-21",
   "missing": true,
-  "tried": "2026-11-19"
+  "tried": "2026-11-27"
  },
  {
   "date": "2025-04-22",
   "missing": true,
-  "tried": "2026-11-19"
+  "tried": "2026-11-27"
  },
  {
   "date": "2025-05-12",
@@ -100,7 +102,7 @@
  {
   "date": "2025-05-23",
   "missing": true,
-  "tried": "2026-11-19"
+  "tried": "2026-11-27"
  },
  {
   "date": "2025-05-27",
@@ -119,37 +121,37 @@
  {
   "date": "2025-08-01",
   "missing": true,
-  "tried": "2026-11-19"
+  "tried": "2026-11-27"
  },
  {
   "date": "2025-10-10",
   "missing": true,
-  "tried": "2026-11-19"
+  "tried": "2026-11-27"
  },
  {
   "date": "2025-10-13",
   "missing": true,
-  "tried": "2026-11-19"
+  "tried": "2026-11-27"
  },
  {
   "date": "2025-11-10",
   "missing": true,
-  "tried": "2026-11-19"
+  "tried": "2026-11-27"
  },
  {
   "date": "2025-11-13",
   "missing": true,
-  "tried": "2026-11-19"
+  "tried": "2026-11-27"
  },
  {
   "date": "2025-11-20",
   "missing": true,
-  "tried": "2026-11-19"
+  "tried": "2026-11-27"
  },
  {
   "date": "2025-11-24",
   "missing": true,
-  "tried": "2026-11-19"
+  "tried": "2026-11-27"
  },
  {
   "date": "2026-01-20",
@@ -161,22 +163,22 @@
  {
   "date": "2026-01-21",
   "missing": true,
-  "tried": "2026-11-19"
+  "tried": "2026-11-27"
  },
  {
   "date": "2026-02-06",
   "missing": true,
-  "tried": "2026-11-19"
+  "tried": "2026-11-27"
  },
  {
   "date": "2026-02-12",
   "missing": true,
-  "tried": "2026-11-19"
+  "tried": "2026-11-27"
  },
  {
   "date": "2026-02-20",
   "missing": true,
-  "tried": "2026-11-19"
+  "tried": "2026-11-27"
  },
  {
   "date": "2026-03-02",
@@ -299,8 +301,10 @@
  },
  {
   "date": "2026-11-19",
-  "missing": true,
-  "tried": "2026-11-19"
+  "source": "WTOP / AP",
+  "url": "https://wtop.com/national/2026/11/how-major-us-stock-indexes-fared-thursday-11-19-2026/",
+  "title": "How major US stock indexes fared Thursday 11/19/2026",
+  "text": "The U.S. stock market tumbled again as AI stocks kept falling on worries their boom may be over. Thursday’s losses came even though a leading AI lab, Anthropic, found a strong welcome for the debut of its own stock on Wall Street.\nThe S&P 500 dropped 2% for a sixth straight loss. That’s its longest losing streak since 2024, and it’s down 8.2% from its record set last month. The Dow Jones Industrial Average dropped 2.2%, while the Nasdaq composite sank 2.3%. The losses were widespread, and more than 90% of the stocks that make up the S&P 500 fell."
  },
  {
   "date": "2026-11-20",
